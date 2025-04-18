@@ -13,6 +13,7 @@ import Modal from './Modal.svelte';
 import Switch from './Switch.svelte';
 import Toast from './Toast.svelte';
 import Text from './Text.svelte';
+import Table from './Table.svelte';
 import Embed from './Embed.svelte';
 import { showToast } from './toastUtils';
 import StyleProvider from './StyleProvider.svelte';
@@ -33,6 +34,7 @@ export {
   Switch,
   Toast,
   Text,
+  Table,
   showToast,
   Embed,
   StyleProvider
@@ -54,6 +56,7 @@ export const components = {
   Switch,
   Toast,
   Text,
+  Table,
   Embed,
   StyleProvider
 };
