@@ -13,7 +13,7 @@
     oninput = undefined,
     onfocus = undefined,
     onblur = undefined
-  } = $props()
+  } = $props();
 
   let randomId = Math.random().toString(36).substring(2, 15);
   let id = `textarea-${randomId}`;

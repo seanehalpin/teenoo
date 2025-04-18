@@ -15,7 +15,7 @@
     background = "", // Background color name or custom value
     color = "primary", // Named color (primary, red, blue, etc.)
     onclick 
-  } = $props()
+  } = $props();
   
   // Determine the background color based on color name or custom background
   function getBackgroundColor(): string {

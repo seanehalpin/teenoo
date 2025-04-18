@@ -29,7 +29,7 @@
     width = "auto",
     height = "auto",
     class: customClass = '',
-  } = $props()
+  } = $props();
 </script>
 
 <StyleProvider>

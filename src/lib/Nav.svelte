@@ -15,7 +15,7 @@
     onclick?: (event: MouseEvent, linkName: string) => void;
     title?: string;
     links?: Array<{link: string, active: boolean}>;
-  }>()
+  }>();
 
   function handleLinkClick(event: MouseEvent, linkName: string) {
     onclick(event, linkName);

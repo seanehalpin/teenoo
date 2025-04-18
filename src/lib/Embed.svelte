@@ -20,7 +20,7 @@
     buttonRight = '16px',
     butttonBottom = 'auto',
     position = 'fixed',
-  } = $props()
+  } = $props();
 
   let left = $derived(currentAlignment === 'left');
   let center = $derived(currentAlignment === 'center');

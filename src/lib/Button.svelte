@@ -10,7 +10,7 @@
     variant = "primary", 
     openModal = "", // ID of the modal to open
     onclick
-  } = $props()
+  } = $props();
 
   // Handle click event
   function handleClick(event: Event) {
