@@ -10,6 +10,8 @@
     width = "100%",
     height = "800px",
     overflow = "scroll",
+    padding = "0 40px",
+    border = false,
     background = "", // Background color name or custom value
     color = "primary", // Named color (primary, red, blue, etc.)
     onclick 
@@ -69,8 +71,11 @@
 <div class="wrap"
   style:height={holderHeight || "100vh"}
   style:background={getBackgroundColor()}
+  style:padding={padding || "0 40px"}
   >
+
   <div class="holder" 
+  class:safari-outline={border}
   bind:clientHeight={realHoldHeight}
   style:width={width || "100%"} 
   style:height={height || "800px"}
@@ -89,8 +94,10 @@
 <style lang="scss">
 
   .wrap {
+    box-sizing: border-box;
+
     position: relative;
-    padding: 0 40px;
+    // padding: 0 40px;
     // height: var(--safari-holder-height, 100vh);
     width: 100%;
     display: flex;
@@ -104,7 +111,7 @@
 
   .holder {
     background: var(--ds-surfacePrimary);
-    box-shadow: 0 40px 40px 0 rgba(0,0,0,0.5);
+    box-shadow: 0 40px 40px 0 rgba(0,0,0,0.2);
     // width: var(--safari-width, 1400px);
     // height: var(--safari-height, 800px);
     max-height: 900px;
@@ -112,6 +119,23 @@
     // overflow: var(--_overflow);
     border-radius: 12px;
     position: relative;
+    box-sizing: border-box;
+  }
+
+  .safari-outline {
+    &:before {
+      box-sizing: border-box;
+      z-index: 10000;
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      top: 0px;
+      left: 0px;
+      width: calc(100%);
+      height: calc(100%);
+      border-radius: var(--12px);
+      border: 1px solid var(--ds-borderPrimary);
+    }
   }
 
   .safari {

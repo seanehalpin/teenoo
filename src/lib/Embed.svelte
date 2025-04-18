@@ -19,6 +19,7 @@
     buttonTop = '16px',
     buttonRight = '16px',
     butttonBottom = 'auto',
+    position = 'fixed',
   } = $props()
 
   let left = $derived(currentAlignment === 'left');
@@ -130,25 +131,38 @@
     }
   }
 
-  
+  let composeHolder: any
+
+  const handleLocationForComposeHolder = () => {
+    showAutolayout = !showAutolayout
+
+    setTimeout(() => {
+      if (showAutolayout) {
+      if (composeHolder) {
+        document.body.appendChild(composeHolder);
+      }
+    }
+    }, 10)
+    
+  }
 
 </script>
 
 <!-- <Toaster position="bottom-left" theme="dark" /> -->
 <StyleProvider>
-{#if !showAutolayout}
 <button 
-  aria-label="button" 
-  class="composer-holder-button fixed" 
-  onclick={() => showAutolayout = !showAutolayout}
-  style="left:{buttonLeft}; top:{buttonTop};right:{buttonRight}; bottom:{butttonBottom};"
-  >
-  <span>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M224,120H208V72a16,16,0,0,0-16-16H152a16,16,0,0,0-16,16v48H120V48a16,16,0,0,0-16-16H64A16,16,0,0,0,48,48v72H32a8,8,0,0,0,0,16H48v72a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V136h16v48a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V136h16a8,8,0,0,0,0-16ZM104,208H64V48h40Zm88-24H152V72h40Z"></path></svg>
-  </span>
+aria-label="button" 
+class="composer-holder-button fixed" 
+onclick={() => handleLocationForComposeHolder()}
+style="left:{buttonLeft}; top:{buttonTop};right:{buttonRight}; bottom:{butttonBottom}; position:{position};" 
+disabled={showAutolayout}
+>
+<span>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M224,120H208V72a16,16,0,0,0-16-16H152a16,16,0,0,0-16,16v48H120V48a16,16,0,0,0-16-16H64A16,16,0,0,0,48,48v72H32a8,8,0,0,0,0,16H48v72a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V136h16v48a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V136h16a8,8,0,0,0,0-16ZM104,208H64V48h40Zm88-24H152V72h40Z"></path></svg>
+</span>
 </button>
-{:else}
-<div class="composer-holder" in:fly={{x: 20, duration: 400, easing: backOut}} out:fly={{ x: 20, duration: 200, easing: backOut }}>
+{#if showAutolayout}
+<div bind:this={composeHolder} class="composer-holder" in:fly={{x: 20, duration: 400, easing: backOut}} out:fly={{ x: 20, duration: 200, easing: backOut }}>
   <div class="compose-header">
     <span>Autolayout</span>
     <button aria-label="button" class="composer-holder-button" onclick={() => showAutolayout = !showAutolayout}>
@@ -283,7 +297,7 @@
     display: flex;
     box-shadow: 0 0 0 1px var(--ds-blue);
     margin: 0 auto;
-    height: 180px;
+    height: 150px;
     border-radius: 0;
     overflow: hidden;
 
@@ -313,7 +327,7 @@
     position: absolute;
     // background: var(--ds-primary);
     background-image: repeating-linear-gradient(315deg, var(--ds-blue56) 0 1px, var(--ds-blue16) 0 50%);
-      background-size: 8px 8px;
+    background-size: 8px 8px;
     // opacity: 0.2;
 
     &.pad-l {
@@ -582,8 +596,12 @@
         -webkit-appearance: none;
       }
 
+      &:hover {
+        background: var(--ds-slate04);
+      }
+
       &:focus-within {
-        outline: 0;
+        outline: 1px solid var(--ds-primary);
         background: var(--ds-slate04);
       }
     }
@@ -761,16 +779,19 @@
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(4px);
-
+    
 
     &.fixed {
-      position: fixed;
+      // position: fixed;
       // right: var(--16px);
       // top: var(--16px);
-      z-index: 999999999;
-      background: var(--ds-surfaceInvert);
-      border: 1px solid var(--ds-surfaceInvert);
-      color: var(--ds-textInvert);
+      z-index: 9999999;
+      // background: var(--ds-surfaceInvert);
+      // border: 1px solid var(--ds-surfaceInvert);
+      // color: var(--ds-textInvert);
+      background: var(--ds-magenta56);
+    border: 1px solid var(--ds-magenta75);
+    color: var(--ds-textPrimary);
     }
 
     span {

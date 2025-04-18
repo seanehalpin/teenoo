@@ -92,7 +92,7 @@
     border: 1px solid var(--ds-borderPrimary);
     border-radius: var(--8px);
     background: var(--ds-inputPrimary);
-    transition: all 0.2s ease;
+    transition: box-shadow 0.2s ease, border 0.2s ease;;
     
     &:focus-within {
       border-color: var(--ds-inputActiveBorder);

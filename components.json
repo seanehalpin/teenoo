@@ -255,7 +255,7 @@
       ]
     },
     {
-      "name": "TagBuilder",
+      "name": "Tagbuilder",
       "description": "Interactive component for creating and managing tags",
       "props": [
         {
