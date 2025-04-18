@@ -1,0 +1,593 @@
+{
+  "components": [
+    {
+      "name": "Button",
+      "description": "A versatile button component with multiple variants and styles",
+      "props": [
+        {
+          "name": "children",
+          "type": "any",
+          "description": "Content to render inside the button"
+        },
+        {
+          "name": "stretch",
+          "type": "boolean",
+          "default": false,
+          "description": "Makes the button take up 100% width of its container"
+        },
+        {
+          "name": "small",
+          "type": "boolean",
+          "default": false,
+          "description": "Renders a smaller version of the button (24px height vs 32px)"
+        },
+        {
+          "name": "dropdown",
+          "type": "boolean",
+          "default": false,
+          "description": "Adds a dropdown chevron icon to the button"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "default": "primary",
+          "options": ["primary", "secondary", "flat"],
+          "description": "Button style variant - primary (filled), secondary (outlined), or flat (text)"
+        },
+        {
+          "name": "openModal",
+          "type": "string",
+          "default": "",
+          "description": "ID of the modal to open when the button is clicked"
+        },
+        {
+          "name": "onclick",
+          "type": "function",
+          "description": "Function to call when the button is clicked"
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "description": "Form input component for text entry",
+      "props": [
+        {
+          "name": "inputType",
+          "type": "string",
+          "default": "text",
+          "description": "HTML input type (text, password, email, etc.)"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "default": "",
+          "description": "Placeholder text for the input"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "",
+          "description": "Current value of the input, can be bound with bind:value"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "",
+          "description": "Label text displayed above the input"
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "default": "",
+          "description": "Error message displayed below the input when validation fails"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": false,
+          "description": "Disables the input"
+        },
+        {
+          "name": "small",
+          "type": "boolean",
+          "default": false,
+          "description": "Renders a smaller version of the input"
+        },
+        {
+          "name": "stretch",
+          "type": "boolean",
+          "default": true,
+          "description": "Makes the input take up 100% width of its container"
+        },
+        {
+          "name": "onchange",
+          "type": "function",
+          "description": "Function called when input value changes and loses focus"
+        },
+        {
+          "name": "oninput",
+          "type": "function",
+          "description": "Function called on every keystroke/input change"
+        },
+        {
+          "name": "onfocus",
+          "type": "function",
+          "description": "Function called when input gains focus"
+        },
+        {
+          "name": "onblur",
+          "type": "function",
+          "description": "Function called when input loses focus"
+        }
+      ]
+    },
+    {
+      "name": "Select",
+      "description": "Dropdown select component for choosing from options",
+      "props": [
+        {
+          "name": "options",
+          "type": "array",
+          "default": "[{ value: 'option1', label: 'Option 1' }, { value: 'option2', label: 'Option 2' }, { value: 'option3', label: 'Option 3' }]",
+          "description": "Array of option objects with value and label properties"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "",
+          "description": "Currently selected value, can be bound with bind:value"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "",
+          "description": "Label text displayed above the select"
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "default": "",
+          "description": "Error message displayed below the select when validation fails"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": false,
+          "description": "Disables the select dropdown"
+        },
+        {
+          "name": "small",
+          "type": "boolean",
+          "default": false,
+          "description": "Renders a smaller version of the select"
+        },
+        {
+          "name": "stretch",
+          "type": "boolean",
+          "default": true,
+          "description": "Makes the select take up 100% width of its container"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "default": "Select an option",
+          "description": "Text displayed when no option is selected"
+        },
+        {
+          "name": "onchange",
+          "type": "function",
+          "description": "Function called when selection changes"
+        }
+      ]
+    },
+    {
+      "name": "Textarea",
+      "description": "Multi-line text input component",
+      "props": [
+        {
+          "name": "placeholder",
+          "type": "string",
+          "default": "",
+          "description": "Placeholder text for the textarea"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "",
+          "description": "Current text value, can be bound with bind:value"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "",
+          "description": "Label text displayed above the textarea"
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "default": "",
+          "description": "Error message displayed below the textarea when validation fails"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": false,
+          "description": "Disables the textarea"
+        },
+        {
+          "name": "rows",
+          "type": "number",
+          "default": 3,
+          "description": "Number of visible text rows"
+        },
+        {
+          "name": "maxlength",
+          "type": "number",
+          "default": null,
+          "description": "Maximum character count; displays counter when set"
+        },
+        {
+          "name": "stretch",
+          "type": "boolean",
+          "default": true,
+          "description": "Makes the textarea take up 100% width of its container"
+        },
+        {
+          "name": "onchange",
+          "type": "function",
+          "description": "Function called when textarea value changes and loses focus"
+        },
+        {
+          "name": "oninput",
+          "type": "function",
+          "description": "Function called on every keystroke/input change"
+        },
+        {
+          "name": "onfocus",
+          "type": "function",
+          "description": "Function called when textarea gains focus"
+        },
+        {
+          "name": "onblur",
+          "type": "function",
+          "description": "Function called when textarea loses focus"
+        }
+      ]
+    },
+    {
+      "name": "TagBuilder",
+      "description": "Interactive component for creating and managing tags",
+      "props": [
+        {
+          "name": "tags",
+          "type": "array",
+          "default": "[]",
+          "description": "Array of tag objects with id and text properties"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "",
+          "description": "Label text displayed above the tag builder"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "default": "Add tags",
+          "description": "Placeholder text for the input field"
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "default": "",
+          "description": "Error message displayed below the tag builder"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": false,
+          "description": "Disables the tag builder"
+        },
+        {
+          "name": "stretch",
+          "type": "boolean",
+          "default": true,
+          "description": "Makes the tag builder take up 100% width of its container"
+        },
+        {
+          "name": "maxTags",
+          "type": "number",
+          "default": null,
+          "description": "Maximum number of tags allowed; displays counter when set"
+        },
+        {
+          "name": "onchange",
+          "type": "function",
+          "description": "Function called when tags are added or removed"
+        }
+      ]
+    },
+    {
+      "name": "Slider",
+      "description": "Range slider for selecting numeric values",
+      "props": [
+        {
+          "name": "min",
+          "type": "number",
+          "default": 0,
+          "description": "Minimum value of the slider range"
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "default": 100,
+          "description": "Maximum value of the slider range"
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "default": 1,
+          "description": "Step size for value increments"
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "default": "min",
+          "description": "Current value for single handle mode"
+        },
+        {
+          "name": "startValue",
+          "type": "number",
+          "default": "min",
+          "description": "Lower bound value for dual handle mode"
+        },
+        {
+          "name": "endValue",
+          "type": "number",
+          "default": "max",
+          "description": "Upper bound value for dual handle mode"
+        },
+        {
+          "name": "dual",
+          "type": "boolean",
+          "default": false,
+          "description": "Enables dual handle mode for selecting a range"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "",
+          "description": "Label text displayed above the slider"
+        },
+        {
+          "name": "valueLabel",
+          "type": "string",
+          "default": "",
+          "description": "Label for the displayed value"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": false,
+          "description": "Disables the slider"
+        },
+        {
+          "name": "stretch",
+          "type": "boolean",
+          "default": true,
+          "description": "Makes the slider take up 100% width of its container"
+        },
+        {
+          "name": "showOutput",
+          "type": "boolean",
+          "default": true,
+          "description": "Shows the current value(s) next to the slider"
+        },
+        {
+          "name": "formatFn",
+          "type": "function",
+          "default": "(val) => val.toString()",
+          "description": "Function to format the displayed value"
+        },
+        {
+          "name": "onchange",
+          "type": "function",
+          "description": "Function called when slider value changes after drag ends"
+        },
+        {
+          "name": "oninput",
+          "type": "function",
+          "description": "Function called continuously during slider drag"
+        }
+      ]
+    },
+    {
+      "name": "Avatar",
+      "description": "Profile or team avatar component with initials and image support",
+      "props": [
+        {
+          "name": "size",
+          "type": "string",
+          "default": "medium",
+          "options": ["small", "medium", "large"],
+          "description": "Size of the avatar - small: 24px, medium: 32px, large: 48px"
+        },
+        {
+          "name": "team",
+          "type": "boolean",
+          "default": false,
+          "description": "When true, avatar has rounded corners (4px small, 8px medium, 12px large); when false, avatar is circular"
+        },
+        {
+          "name": "initial",
+          "type": "string",
+          "default": "",
+          "description": "Single letter or two initials to display when no image is provided"
+        },
+        {
+          "name": "image",
+          "type": "string",
+          "default": "",
+          "description": "URL to an image to display"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "default": "",
+          "description": "Full name for accessibility and automatic initial generation"
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "default": "",
+          "options": ["primary", "red", "blue", "magenta", "green", "orange", "gold"],
+          "description": "Color name from design system to use as background"
+        },
+        {
+          "name": "bgcolor",
+          "type": "string",
+          "default": "",
+          "description": "Custom background color (overrides color prop)"
+        },
+        {
+          "name": "textcolor",
+          "type": "string",
+          "default": "",
+          "description": "Custom text color for the initials"
+        },
+        {
+          "name": "avatarNum",
+          "type": "number",
+          "default": 0,
+          "description": "Number between 1-20 for placeholder avatars from pravatar.cc"
+        }
+      ]
+    },
+    {
+      "name": "Modal",
+      "description": "Dialog component for displaying content that requires attention",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "default": "",
+          "description": "Unique ID for the modal, used with Button's openModal prop"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "",
+          "description": "Title text displayed in the modal header"
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "default": "medium",
+          "options": ["small", "medium", "large"],
+          "description": "Size of the modal - small: 400px, medium: 600px, large: 800px max width"
+        },
+        {
+          "name": "children",
+          "type": "any",
+          "description": "Content to render inside the modal body"
+        }
+      ]
+    },
+    {
+      "name": "Nav",
+      "description": "Navigation component for app layouts",
+      "props": [
+        {
+          "name": "children",
+          "type": "any",
+          "description": "Content to render inside the navigation component"
+        }
+      ]
+    },
+    {
+      "name": "Safari",
+      "description": "Component that mimics Safari browser chrome for prototypes",
+      "props": [
+        {
+          "name": "children",
+          "type": "any",
+          "description": "Content to render inside the Safari browser frame"
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "default": "https://example.com",
+          "description": "URL to display in the address bar"
+        }
+      ]
+    },
+    {
+      "name": "Autolayout",
+      "description": "Flexible layout component with configurable spacing and direction",
+      "props": [
+        {
+          "name": "children",
+          "type": "any",
+          "description": "Content to arrange within the layout"
+        },
+        {
+          "name": "direction",
+          "type": "string",
+          "default": "column",
+          "options": ["row", "column"],
+          "description": "Direction of the layout - horizontal (row) or vertical (column)"
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "default": 8,
+          "description": "Space between child elements in pixels"
+        },
+        {
+          "name": "align",
+          "type": "string",
+          "default": "stretch",
+          "options": ["start", "center", "end", "stretch"],
+          "description": "Alignment of items perpendicular to the main axis"
+        },
+        {
+          "name": "justify",
+          "type": "string",
+          "default": "start",
+          "options": ["start", "center", "end", "space-between", "space-around"],
+          "description": "Distribution of items along the main axis"
+        }
+      ]
+    }
+  ],
+  "designTokens": {
+    "colors": [
+      { "name": "primary", "value": "var(--ds-primary)", "description": "Primary brand color" },
+      { "name": "red", "value": "var(--ds-red)", "description": "Red accent color" },
+      { "name": "blue", "value": "var(--ds-blue)", "description": "Blue accent color" },
+      { "name": "magenta", "value": "var(--ds-magenta)", "description": "Magenta accent color" },
+      { "name": "green", "value": "var(--ds-green)", "description": "Green accent color" },
+      { "name": "orange", "value": "var(--ds-orange)", "description": "Orange accent color" },
+      { "name": "gold", "value": "var(--ds-gold)", "description": "Gold accent color" }
+    ],
+    "spacing": [
+      { "name": "4px", "value": "var(--4px)", "description": "Tiny spacing (0.25rem)" },
+      { "name": "8px", "value": "var(--8px)", "description": "Small spacing (0.5rem)" },
+      { "name": "12px", "value": "var(--12px)", "description": "Medium-small spacing (0.75rem)" },
+      { "name": "16px", "value": "var(--16px)", "description": "Base spacing (1rem)" },
+      { "name": "24px", "value": "var(--24px)", "description": "Medium spacing (1.5rem)" },
+      { "name": "32px", "value": "var(--32px)", "description": "Large spacing (2rem)" },
+      { "name": "48px", "value": "var(--48px)", "description": "Extra large spacing (3rem)" }
+    ],
+    "typography": [
+      { "name": "font-base", "value": "var(--font-base)", "description": "Base font family (system UI)" },
+      { "name": "font-mono", "value": "var(--font-mono)", "description": "Monospace font family" },
+      { "name": "font-round", "value": "var(--font-round)", "description": "Rounded font family" }
+    ],
+    "sizes": [
+      { "name": "small", "description": "Small component size (typically 24px height)" },
+      { "name": "medium", "description": "Medium component size (typically 32px height)" },
+      { "name": "large", "description": "Large component size (typically 48px height)" }
+    ]
+  }
+}
