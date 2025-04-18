@@ -1,0 +1,34 @@
+{
+  "name": "teen0o",
+  "version": "0.0.1",
+  "description": "Reusable Svelte component library for tino prototyping",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src/lib/styles/variables.css"
+  ],
+  "scripts": {
+    "dev": "node node_modules/@sveltejs/package/src/cli.js watch",
+    "build": "node node_modules/@sveltejs/package/src/cli.js",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "svelte": "^5.0.0"
+  },
+  "devDependencies": {
+    "@sveltejs/package": "^2.3.10",
+    "@tsconfig/svelte": "^5.0.4"
+  }
+}
