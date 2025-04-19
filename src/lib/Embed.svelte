@@ -289,13 +289,6 @@ disabled={showAutolayout}
         paddingBottom="{paddingVertical}px"
         paddingLeft="{paddingHorizontal}px"
         paddingRight="{paddingHorizontal}px"
-        border={borderAll}
-        borderLeft={borderLeft}
-        borderRight={borderRight}
-        borderTop={borderTop}
-        borderBottom={borderBottom}
-        borderWeight={borderWeight}
-        borderColor={borderColor}
         vertical={currentDirection === 'vertical'}
         left={left}
         center={center}
