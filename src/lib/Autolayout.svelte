@@ -24,12 +24,34 @@
     paddingRight = '',
     paddingTop = '',
     paddingBottom = '',
+    border = false,
+    borderLeft = false,
+    borderRight = false,
+    borderTop = false,
+    borderBottom = false,
+    borderWeight = 1,
+    borderColor = 'primary', // primary, secondary, strong
     gap = '',
     background = "transparent",
     width = "auto",
     height = "auto",
     class: customClass = '',
   } = $props();
+  
+  // Map border color names to CSS variables
+  let borderColorVar = $derived(() => {
+    const colorMap = {
+      'primary': 'var(--ds-borderPrimary)',
+      'secondary': 'var(--ds-borderSecondary)',
+      'strong': 'var(--ds-borderStrong)'
+    };
+    return colorMap[borderColor] || colorMap.primary;
+  });
+
+  // Create border style based on weight and color
+  let borderStyle = $derived(() => {
+    return `${borderWeight}px solid ${borderColorVar()}`;
+  });
 </script>
 
 <StyleProvider>
@@ -43,6 +65,11 @@
     style:padding-top={paddingTop || undefined}
     style:padding-bottom={paddingBottom || undefined}
     style:padding={padding || undefined}
+    style:border-left={borderLeft ? borderStyle() : undefined}
+    style:border-right={borderRight ? borderStyle() : undefined}
+    style:border-top={borderTop ? borderStyle() : undefined}
+    style:border-bottom={borderBottom ? borderStyle() : undefined}
+    style:border={border ? borderStyle() : undefined}
     style:gap={gap || undefined}
     style:width={width || undefined}
     style:height={height || undefined}

@@ -8,6 +8,16 @@
 
   // let showAutolayout = $state(false)
 
+  // Initialize border state for the dropdown
+let initBorderValue = $state(() => {
+  if (borderAll) return 'all';
+  if (borderLeft) return 'left';
+  if (borderRight) return 'right';
+  if (borderTop) return 'top';
+  if (borderBottom) return 'bottom';
+  return 'all'; // Default to 'all' if no border is specified
+});
+
   let { 
     showAutolayout = $bindable(false),
     currentAlignment = 'center', 
@@ -15,6 +25,13 @@
     gap = null,
     paddingHorizontal = 16,
     paddingVertical = 16,
+    borderAll = false,
+    borderLeft = false,
+    borderRight = false,
+    borderTop = false,
+    borderBottom = false,
+    borderWeight = null,
+    borderColor = 'primary', // primary, secondary, strong
     buttonLeft = 'auto',
     buttonTop = '16px',
     buttonRight = '16px',
@@ -39,6 +56,15 @@
   let outputPaddingH = $derived(paddingHorizontal >= 1 ? ` paddingLeft="${paddingHorizontal}px" paddingRight="${paddingHorizontal}px"` : '');
   let outputPaddingV = $derived(paddingVertical >= 1 ? ` paddingTop="${paddingVertical}px" paddingBottom="${paddingVertical}px"` : '');
   let outputGapAuto = $derived(gapAuto ? ' gapAuto' : '');
+  
+  // Border output preparation
+  let outputBorderAll = $derived(borderWeight > 0 && borderAll ? ' border' : '');
+  let outputBorderLeft = $derived(borderWeight > 0 && borderLeft ? ' borderLeft' : '');
+  let outputBorderRight = $derived(borderWeight > 0 && borderRight ? ' borderRight' : '');
+  let outputBorderTop = $derived(borderWeight > 0 && borderTop ? ' borderTop' : '');
+  let outputBorderBottom = $derived(borderWeight > 0 && borderBottom ? ' borderBottom' : '');
+  let outputBorderWeight = $derived(borderWeight > 0 && borderWeight !== 1 ? ` borderWeight={${borderWeight}}` : '');
+  let outputBorderColor = $derived(borderWeight > 0 && borderColor && borderColor !== 'primary' ? ` borderColor="${borderColor}"` : '');
 
   let outputAlignment = $derived(
     currentAlignment === 'left' ? ' left' :
@@ -53,7 +79,7 @@
     ' center' // Default alignment
   );
 
-  let output = $derived(`<T.Autolayout${outputGap}${outputPaddingH}${outputPaddingV}${outputDirection}${outputAlignment}${outputGapAuto}> </T.Autolayout>`);
+  let output = $derived(`<T.Autolayout${outputGap}${outputPaddingH}${outputPaddingV}${outputDirection}${outputAlignment}${outputGapAuto}${outputBorderAll}${outputBorderLeft}${outputBorderRight}${outputBorderTop}${outputBorderBottom}${outputBorderWeight}${outputBorderColor}> </T.Autolayout>`);
 
   let buttons = $state([
     {button: 'top-left', active: false},
@@ -114,9 +140,22 @@
     {value: 'auto', label: 'Auto', active: false},
   ])
 
-  let currentSelectedValue = $state(selectValue.find(item => item.active)?.label)
+  // Ensure at least one option is active - default to 'all' if none is active
+  let activeOption = ['all', 'left', 'right', 'top', 'bottom'].includes(initBorderValue) ? initBorderValue : 'all';
+  
+  let borderSelectValue = $state([
+    {value: 'all', label: 'All', active: activeOption === 'all'},
+    {value: 'left', label: 'Left', active: activeOption === 'left'},
+    {value: 'right', label: 'Right', active: activeOption === 'right'},
+    {value: 'top', label: 'Top', active: activeOption === 'top'},
+    {value: 'bottom', label: 'Bottom', active: activeOption === 'bottom'},
+  ])
 
-    const handleSelect = (e) => {
+  let currentSelectedValue = $state(selectValue.find(item => item.active)?.label)
+  // Initialize currentBorderValue explicitly to "All" to avoid undefined issues
+  let currentBorderValue = $state("All")
+
+  const handleSelect = (e) => {
     selectValue = selectValue.map(item => ({
       ...item,
       active: item.value === e.target.value
@@ -131,7 +170,76 @@
     }
   }
 
+  const handleBorderSelect = (e) => {
+    // Check if the event is a real event or a synthetic one
+    const selectedValue = e.target?.value || e;
+    
+    // Update border select values without triggering reactivity cascades
+    borderSelectValue = borderSelectValue.map(item => ({
+      ...item,
+      active: item.value === selectedValue
+    }));
+
+    // Set the current border value label directly from the option's label
+    const activeOption = borderSelectValue.find(item => item.value === selectedValue);
+    if (activeOption) {
+      currentBorderValue = activeOption.label;
+    }
+    
+    // Reset all border values
+    borderAll = false;
+    borderLeft = false;
+    borderRight = false;
+    borderTop = false;
+    borderBottom = false;
+    
+    // Only apply borders if borderWeight is > 0
+    if (borderWeight > 0) {
+      // Set the selected border
+      if (selectedValue === 'all') {
+        borderAll = true;
+      } else if (selectedValue === 'left') {
+        borderLeft = true;
+      } else if (selectedValue === 'right') {
+        borderRight = true;
+      } else if (selectedValue === 'top') {
+        borderTop = true;
+      } else if (selectedValue === 'bottom') {
+        borderBottom = true;
+      }
+    }
+  }
+
   let composeHolder: any
+
+  // Watch borderWeight changes to update border flags accordingly
+  function handleBorderWeightChange() {
+    const activeBorder = borderSelectValue.find(item => item.active)?.value || 'all';
+    
+    // If borderWeight is set to 0, remove all borders
+    if (borderWeight <= 0) {
+      borderAll = false;
+      borderLeft = false;
+      borderRight = false;
+      borderTop = false;
+      borderBottom = false;
+    } else {
+      // Re-apply the current border selection
+      handleBorderSelect(activeBorder);
+    }
+  }
+
+  // Use a simple state variable to track initialization
+  let initialized = $state(false);
+  
+  // Initialize the border selection only once
+  if (!initialized) {
+    // Set initial border selection based on the active value
+    const initialBorderValue = borderSelectValue.find(item => item.active)?.value || 'all';
+    // Call once to initialize
+    handleBorderSelect(initialBorderValue);
+    initialized = true;
+  }
 
   const handleLocationForComposeHolder = () => {
     showAutolayout = !showAutolayout
@@ -181,6 +289,13 @@ disabled={showAutolayout}
         paddingBottom="{paddingVertical}px"
         paddingLeft="{paddingHorizontal}px"
         paddingRight="{paddingHorizontal}px"
+        border={borderAll}
+        borderLeft={borderLeft}
+        borderRight={borderRight}
+        borderTop={borderTop}
+        borderBottom={borderBottom}
+        borderWeight={borderWeight}
+        borderColor={borderColor}
         vertical={currentDirection === 'vertical'}
         left={left}
         center={center}
@@ -247,6 +362,52 @@ disabled={showAutolayout}
             <input type="number" placeholder="0" min="0" max="1000" step="1" bind:value={paddingHorizontal} class="composer-gap-input" />
             <span class="composer-gap-label">H</span>
           </div>
+          
+          <div class="composer-block-label extra">
+            Border
+          </div>
+          
+          <div class="border-options">
+            <div class="composer-gap has-dropdown" style="flex: 1;">
+              <input type="number" placeholder="0" min="0" max="10" step="1" bind:value={borderWeight} oninput={handleBorderWeightChange} class="composer-gap-input" />
+              <div class="dropdown">
+                <span class="selected-value">
+                  <!-- {currentBorderValue} -->
+                  {#if currentBorderValue == 'All'}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 7.5C8.17157 7.5 7.5 8.17157 7.5 9V15C7.5 15.8284 8.17157 16.5 9 16.5H15C15.8284 16.5 16.5 15.8284 16.5 15V9C16.5 8.17157 15.8284 7.5 15 7.5H9ZM8.5 9C8.5 8.72386 8.72386 8.5 9 8.5H15C15.2761 8.5 15.5 8.72386 15.5 9V15C15.5 15.2761 15.2761 15.5 15 15.5H9C8.72386 15.5 8.5 15.2761 8.5 15V9Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 5.5C6.61929 5.5 5.5 6.61929 5.5 8V16C5.5 17.3807 6.61929 18.5 8 18.5H16C17.3807 18.5 18.5 17.3807 18.5 16V8C18.5 6.61929 17.3807 5.5 16 5.5H8ZM6.5 8C6.5 7.17157 7.17157 6.5 8 6.5H16C16.8284 6.5 17.5 7.17157 17.5 8V16C17.5 16.8284 16.8284 17.5 16 17.5H8C7.17157 17.5 6.5 16.8284 6.5 16V8Z" fill="currentColor"/>
+                    </svg>                    
+                  {:else if currentBorderValue == 'Right'}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 6.5C7.79569 6.5 7.60212 6.54057 7.42595 6.61362C7.17087 6.7194 6.87834 6.59837 6.77256 6.34329C6.66678 6.08821 6.78782 5.79568 7.0429 5.6899C7.33836 5.56737 7.66194 5.5 8 5.5H9.375C9.65114 5.5 9.875 5.72386 9.875 6C9.875 6.27614 9.65114 6.5 9.375 6.5H8ZM11.625 6C11.625 5.72386 11.8489 5.5 12.125 5.5H13.5C13.7761 5.5 14 5.72386 14 6C14 6.27614 13.7761 6.5 13.5 6.5H12.125C11.8489 6.5 11.625 6.27614 11.625 6ZM6.34329 6.77256C6.59837 6.87834 6.7194 7.17087 6.61362 7.42595C6.54057 7.60212 6.5 7.79569 6.5 8V9C6.5 9.27614 6.27614 9.5 6 9.5C5.72386 9.5 5.5 9.27614 5.5 9V8C5.5 7.66194 5.56737 7.33836 5.6899 7.0429C5.79568 6.78782 6.08821 6.66678 6.34329 6.77256ZM6 10.5C6.27614 10.5 6.5 10.7239 6.5 11V13C6.5 13.2761 6.27614 13.5 6 13.5C5.72386 13.5 5.5 13.2761 5.5 13V11C5.5 10.7239 5.72386 10.5 6 10.5ZM6 14.5C6.27614 14.5 6.5 14.7239 6.5 15V16C6.5 16.2043 6.54057 16.3979 6.61362 16.574C6.7194 16.8291 6.59837 17.1217 6.34329 17.2274C6.08821 17.3332 5.79568 17.2122 5.6899 16.9571C5.56737 16.6616 5.5 16.3381 5.5 16V15C5.5 14.7239 5.72386 14.5 6 14.5ZM6.77256 17.6567C6.87834 17.4016 7.17087 17.2806 7.42595 17.3864C7.60212 17.4594 7.79569 17.5 8 17.5H9.25C9.52614 17.5 9.75 17.7239 9.75 18C9.75 18.2761 9.52614 18.5 9.25 18.5H8C7.66194 18.5 7.33836 18.4326 7.0429 18.3101C6.78782 18.2043 6.66678 17.9118 6.77256 17.6567ZM11.25 18C11.25 17.7239 11.4739 17.5 11.75 17.5H13C13.2761 17.5 13.5 17.7239 13.5 18C13.5 18.2761 13.2761 18.5 13 18.5H11.75C11.4739 18.5 11.25 18.2761 11.25 18Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5 7C14.5 6.17157 15.1716 5.5 16 5.5H17C17.8284 5.5 18.5 6.17157 18.5 7V17C18.5 17.8284 17.8284 18.5 17 18.5H16C15.1716 18.5 14.5 17.8284 14.5 17V7ZM16 6.5C15.7239 6.5 15.5 6.72386 15.5 7V17C15.5 17.2761 15.7239 17.5 16 17.5H17C17.2761 17.5 17.5 17.2761 17.5 17V7C17.5 6.72386 17.2761 6.5 17 6.5H16Z" fill="currentColor"/>
+                    </svg>
+                  {:else if currentBorderValue == 'Left'}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16 17.5C16.2043 17.5 16.3979 17.4594 16.574 17.3864C16.8291 17.2806 17.1217 17.4016 17.2274 17.6567C17.3332 17.9118 17.2122 18.2043 16.9571 18.3101C16.6616 18.4326 16.3381 18.5 16 18.5H14.625C14.3489 18.5 14.125 18.2761 14.125 18C14.125 17.7239 14.3489 17.5 14.625 17.5H16ZM12.375 18C12.375 18.2761 12.1511 18.5 11.875 18.5H10.5C10.2239 18.5 10 18.2761 10 18C10 17.7239 10.2239 17.5 10.5 17.5H11.875C12.1511 17.5 12.375 17.7239 12.375 18ZM17.6567 17.2274C17.4016 17.1217 17.2806 16.8291 17.3864 16.574C17.4594 16.3979 17.5 16.2043 17.5 16V15C17.5 14.7239 17.7239 14.5 18 14.5C18.2761 14.5 18.5 14.7239 18.5 15V16C18.5 16.3381 18.4326 16.6616 18.3101 16.9571C18.2043 17.2122 17.9118 17.3332 17.6567 17.2274ZM18 13.5C17.7239 13.5 17.5 13.2761 17.5 13L17.5 11C17.5 10.7239 17.7239 10.5 18 10.5C18.2761 10.5 18.5 10.7239 18.5 11L18.5 13C18.5 13.2761 18.2761 13.5 18 13.5ZM18 9.5C17.7239 9.5 17.5 9.27614 17.5 9V8C17.5 7.79569 17.4594 7.60212 17.3864 7.42595C17.2806 7.17087 17.4016 6.87834 17.6567 6.77256C17.9118 6.66678 18.2043 6.78782 18.3101 7.0429C18.4326 7.33836 18.5 7.66194 18.5 8V9C18.5 9.27614 18.2761 9.5 18 9.5ZM17.2274 6.34329C17.1217 6.59837 16.8291 6.7194 16.5741 6.61362C16.3979 6.54057 16.2043 6.5 16 6.5L14.75 6.5C14.4739 6.5 14.25 6.27614 14.25 6C14.25 5.72386 14.4739 5.5 14.75 5.5L16 5.5C16.3381 5.5 16.6616 5.56737 16.9571 5.6899C17.2122 5.79568 17.3332 6.08821 17.2274 6.34329ZM12.75 6C12.75 6.27614 12.5261 6.5 12.25 6.5L11 6.5C10.7239 6.5 10.5 6.27614 10.5 6C10.5 5.72386 10.7239 5.5 11 5.5L12.25 5.5C12.5261 5.5 12.75 5.72386 12.75 6Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 17C9.5 17.8284 8.82843 18.5 8 18.5L7 18.5C6.17157 18.5 5.5 17.8284 5.5 17L5.5 7C5.5 6.17157 6.17157 5.5 7 5.5L8 5.5C8.82843 5.5 9.5 6.17157 9.5 7L9.5 17ZM8 17.5C8.27614 17.5 8.5 17.2761 8.5 17L8.5 7C8.5 6.72386 8.27614 6.5 8 6.5H7C6.72386 6.5 6.5 6.72386 6.5 7L6.5 17C6.5 17.2761 6.72386 17.5 7 17.5L8 17.5Z" fill="currentColor"/>
+                    </svg>
+                  {:else if currentBorderValue == 'Top'}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.5 16C6.5 16.2043 6.54057 16.3979 6.61362 16.574C6.7194 16.8291 6.59837 17.1217 6.34329 17.2274C6.08821 17.3332 5.79568 17.2122 5.6899 16.9571C5.56737 16.6616 5.5 16.3381 5.5 16L5.5 14.625C5.5 14.3489 5.72386 14.125 6 14.125C6.27614 14.125 6.5 14.3489 6.5 14.625L6.5 16ZM6 12.375C5.72386 12.375 5.5 12.1511 5.5 11.875L5.5 10.5C5.5 10.2239 5.72386 10 6 10C6.27614 10 6.5 10.2239 6.5 10.5L6.5 11.875C6.5 12.1511 6.27614 12.375 6 12.375ZM6.77256 17.6567C6.87834 17.4016 7.17087 17.2806 7.42595 17.3864C7.60212 17.4594 7.79569 17.5 8 17.5H9C9.27614 17.5 9.5 17.7239 9.5 18C9.5 18.2761 9.27614 18.5 9 18.5H8C7.66194 18.5 7.33836 18.4326 7.0429 18.3101C6.78782 18.2043 6.66678 17.9118 6.77256 17.6567ZM10.5 18C10.5 17.7239 10.7239 17.5 11 17.5H13C13.2761 17.5 13.5 17.7239 13.5 18C13.5 18.2761 13.2761 18.5 13 18.5H11C10.7239 18.5 10.5 18.2761 10.5 18ZM14.5 18C14.5 17.7239 14.7239 17.5 15 17.5H16C16.2043 17.5 16.3979 17.4594 16.574 17.3864C16.8291 17.2806 17.1217 17.4016 17.2274 17.6567C17.3332 17.9118 17.2122 18.2043 16.9571 18.3101C16.6616 18.4326 16.3381 18.5 16 18.5H15C14.7239 18.5 14.5 18.2761 14.5 18ZM17.6567 17.2274C17.4016 17.1217 17.2806 16.8291 17.3864 16.574C17.4594 16.3979 17.5 16.2043 17.5 16V14.75C17.5 14.4739 17.7239 14.25 18 14.25C18.2761 14.25 18.5 14.4739 18.5 14.75V16C18.5 16.3381 18.4326 16.6616 18.3101 16.9571C18.2043 17.2122 17.9118 17.3332 17.6567 17.2274ZM18 12.75C17.7239 12.75 17.5 12.5261 17.5 12.25V11C17.5 10.7239 17.7239 10.5 18 10.5C18.2761 10.5 18.5 10.7239 18.5 11V12.25C18.5 12.5261 18.2761 12.75 18 12.75Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7 9.5C6.17157 9.5 5.5 8.82843 5.5 8L5.5 7C5.5 6.17157 6.17157 5.5 7 5.5L17 5.5C17.8284 5.5 18.5 6.17157 18.5 7V8C18.5 8.82843 17.8284 9.5 17 9.5L7 9.5ZM6.5 8C6.5 8.27614 6.72386 8.5 7 8.5L17 8.5C17.2761 8.5 17.5 8.27614 17.5 8V7C17.5 6.72386 17.2761 6.5 17 6.5L7 6.5C6.72386 6.5 6.5 6.72386 6.5 7L6.5 8Z" fill="currentColor"/>
+                    </svg>
+                  {:else if currentBorderValue == 'Bottom'}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 8C17.5 7.79569 17.4594 7.60212 17.3864 7.42595C17.2806 7.17087 17.4016 6.87834 17.6567 6.77256C17.9118 6.66679 18.2043 6.78782 18.3101 7.0429C18.4326 7.33836 18.5 7.66195 18.5 8V9.375C18.5 9.65114 18.2761 9.875 18 9.875C17.7239 9.875 17.5 9.65114 17.5 9.375V8ZM18 11.625C18.2761 11.625 18.5 11.8489 18.5 12.125V13.5C18.5 13.7761 18.2761 14 18 14C17.7239 14 17.5 13.7761 17.5 13.5V12.125C17.5 11.8489 17.7239 11.625 18 11.625ZM17.2274 6.34329C17.1217 6.59837 16.8291 6.7194 16.5741 6.61363C16.3979 6.54057 16.2043 6.5 16 6.5L15 6.5C14.7239 6.5 14.5 6.27614 14.5 6C14.5 5.72386 14.7239 5.5 15 5.5L16 5.5C16.3381 5.5 16.6616 5.56738 16.9571 5.6899C17.2122 5.79568 17.3332 6.08821 17.2274 6.34329ZM13.5 6C13.5 6.27614 13.2761 6.5 13 6.5L11 6.5C10.7239 6.5 10.5 6.27614 10.5 6C10.5 5.72386 10.7239 5.5 11 5.5L13 5.5C13.2761 5.5 13.5 5.72386 13.5 6ZM9.5 6C9.5 6.27614 9.27614 6.5 9 6.5L8 6.5C7.79569 6.5 7.60212 6.54057 7.42595 6.61362C7.17087 6.7194 6.87834 6.59837 6.77256 6.34329C6.66679 6.08821 6.78782 5.79568 7.0429 5.6899C7.33836 5.56737 7.66194 5.5 8 5.5L9 5.5C9.27614 5.5 9.5 5.72386 9.5 6ZM6.34329 6.77256C6.59837 6.87834 6.7194 7.17087 6.61363 7.42595C6.54057 7.60212 6.5 7.79569 6.5 8L6.5 9.25C6.5 9.52614 6.27614 9.75 6 9.75C5.72386 9.75 5.5 9.52614 5.5 9.25L5.5 8C5.5 7.66194 5.56738 7.33836 5.6899 7.0429C5.79568 6.78782 6.08821 6.66678 6.34329 6.77256ZM6 11.25C6.27614 11.25 6.5 11.4739 6.5 11.75L6.5 13C6.5 13.2761 6.27614 13.5 6 13.5C5.72386 13.5 5.5 13.2761 5.5 13L5.5 11.75C5.5 11.4739 5.72386 11.25 6 11.25Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M17 14.5C17.8284 14.5 18.5 15.1716 18.5 16V17C18.5 17.8284 17.8284 18.5 17 18.5L7 18.5C6.17157 18.5 5.5 17.8284 5.5 17L5.5 16C5.5 15.1716 6.17157 14.5 7 14.5L17 14.5ZM17.5 16C17.5 15.7239 17.2761 15.5 17 15.5L7 15.5C6.72386 15.5 6.5 15.7239 6.5 16L6.5 17C6.5 17.2761 6.72386 17.5 7 17.5L17 17.5C17.2761 17.5 17.5 17.2761 17.5 17V16Z" fill="currentColor"/>
+                    </svg>
+                  {/if}
+                </span>
+                <select class="custom-select" onchange={handleBorderSelect}>
+                  {#each borderSelectValue as item}
+                  <option value={item.value}>{item.label}</option>
+                  {/each}
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -274,6 +435,15 @@ disabled={showAutolayout}
             <input type="number" placeholder="0" min="0" max="1000" step="1" bind:value={paddingVertical} class="composer-gap-input" />
             <span class="composer-gap-label">V</span>
           </div>
+
+          <div class="composer-block-label extra"></div>
+          <div class="border-color-select border-color-{borderColor.toLowerCase()}">
+            <select bind:value={borderColor} class="color-select custom-select">
+              <option value="primary">Primary</option>
+              <option value="secondary">Secondary</option>
+              <option value="strong">Strong</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
@@ -300,11 +470,123 @@ disabled={showAutolayout}
     height: 150px;
     border-radius: 0;
     overflow: hidden;
+  }
+  
+  .border-controls {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--4px);
+    align-items: center;
+  }
+  
+  .border-button {
+    width: 100%;
+    height: var(--32px);
+    background: var(--ds-surfaceSecondary);
+    border: 1px solid var(--ds-borderPrimary);
+    border-radius: var(--4px);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+    &:hover {
+      background: var(--ds-slate04);
+    }
+    
+    &.active {
+      background: var(--ds-primary16);
+      border-color: var(--ds-primary);
+      
+      .border-icon {
+        border-color: var(--ds-primary);
+      }
+    }
+  }
+  
+  .border-icon {
+    width: 8px;
+    height: 8px;
+    position: relative;
+    
+    &.all-borders {
+      border: 1px solid var(--ds-textTertiary);
+      border-radius: 2px;
+    }
+    
+    &.top-border {
+      border-top: 1px solid var(--ds-textTertiary);
+      border-radius: 2px;
+    }
+    
+    &.right-border {
+      border-right: 1px solid var(--ds-textTertiary);
+      border-radius: 2px;
+    }
+    
+    &.bottom-border {
+      border-bottom: 1px solid var(--ds-textTertiary);
+      border-radius: 2px;
+    }
+    
+    &.left-border {
+      border-left: 1px solid var(--ds-textTertiary);
+      border-radius: 2px;
+    }
+  }
+  
+  .border-options {
+    display: flex;
+    gap: var(--8px);
+    margin-bottom: var(--8px);
+  }
+  
+  .border-color-select {
+    --color-select-bg: var(--ds-borderPrimary);
+    flex: 1;
+    position: relative;
 
-    // transform: matrix3d(0.707107, -0.40558, -0.579228, 0, 0.707107, 0.40558, 0.579228, 0, 0, -0.819152, 0.573576, 0, 0, 0, 0, 1);
-    // transform-style: preserve-3d;
-    // transform-origin: center;
-    // scale: 0.75;
+    &:before {
+      background: var(--color-select-bg);
+      border: 1px solid var(--ds-slate04);
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translate3d(0, -50%, 0);
+      right: var(--8px);
+      width: var(--12px);
+      height: var(--12px);
+      z-index: 100;
+      pointer-events: none;
+      border-radius: 4px;
+    }
+
+    &.border-color-primary {
+      --color-select-bg: var(--ds-borderPrimary);
+    }
+    &.border-color-secondary {
+      --color-select-bg: var(--ds-borderSecondary);
+    }
+    &.border-color-strong {
+      --color-select-bg: var(--ds-borderStrong);
+    }
+
+    .color-select {
+      box-shadow: 0 0 0 1px var(--ds-borderPrimary);
+      width: 100%;
+      height: 34px;
+      position: relative;
+      padding: 6px 6px 6px 16px;
+
+      &:focus {
+        outline: 0;
+      }
+      
+      &:hover {
+        background: var(--ds-slate04);
+      }
+    }
   }
 
   .foo {
@@ -370,7 +652,7 @@ disabled={showAutolayout}
     z-index: 999999999;
     background: var(--ds-surfacePrimary);
     border-left: 1px solid var(--ds-borderStrong);
-    box-shadow: -8px 0 0 0 rgba(0,0,0,0.08);
+    box-shadow: -5px 0 0 0 rgba(0,0,0,0.08);
   }
 
   .output-holder {
@@ -572,6 +854,7 @@ disabled={showAutolayout}
     box-shadow: 0 0 0 1px var(--ds-borderPrimary);
     padding: var(--4px) var(--12px) var(--4px) var(--4px);
 
+
     &.has-dropdown {
       gap: var(--4px);
       padding: var(--4px);
@@ -614,6 +897,7 @@ disabled={showAutolayout}
 
 
   .dropdown {
+    cursor: pointer;
     background-color: transparent;
     padding: 2px var(--4px);
     position: relative;
@@ -665,7 +949,7 @@ disabled={showAutolayout}
       // height: var(--28px);
       display: flex;
       align-items: center;
-      background: var(--ds-InputBackground);
+      background: var(--ds-surfaceSecondary);
       cursor: pointer;
 
       &::picker-icon {
@@ -757,7 +1041,8 @@ disabled={showAutolayout}
   .compose-header {
     display: flex;
     width: 100%;
-    padding: var(--16px);
+    padding: 0 var(--16px);
+    height: var(--64px);
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid var(--ds-borderStrong);
@@ -778,7 +1063,6 @@ disabled={showAutolayout}
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(4px);
     
 
     &.fixed {
@@ -789,9 +1073,10 @@ disabled={showAutolayout}
       // background: var(--ds-surfaceInvert);
       // border: 1px solid var(--ds-surfaceInvert);
       // color: var(--ds-textInvert);
-      background: var(--ds-magenta56);
-    border: 1px solid var(--ds-magenta75);
-    color: var(--ds-textPrimary);
+      background: transparent;
+      border: 1px dashed var(--ds-slate);
+      color: var(--ds-textPrimary);
+      backdrop-filter: blur(12px);
     }
 
     span {
