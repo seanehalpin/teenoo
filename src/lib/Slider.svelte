@@ -5,7 +5,7 @@
     min = 0,
     max = 100,
     step = 1,
-    value = min, // For single handle mode
+    value = $bindable(min), // For single handle mode
     startValue = min, // For dual handle mode
     endValue = max, // For dual handle mode
     dual = false, // Whether to use dual handles
