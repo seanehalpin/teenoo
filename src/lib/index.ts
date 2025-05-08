@@ -15,6 +15,7 @@ import Toast from './Toast.svelte';
 import Text from './Text.svelte';
 import Table from './Table.svelte';
 import Embed from './Embed.svelte';
+import Tabs from './Tabs.svelte';
 import { showToast } from './toastUtils';
 import StyleProvider from './StyleProvider.svelte';
 
@@ -35,6 +36,7 @@ export {
   Toast,
   Text,
   Table,
+  Tabs,
   showToast,
   Embed,
   StyleProvider
@@ -57,6 +59,7 @@ export const components = {
   Toast,
   Text,
   Table,
+  Tabs,
   Embed,
   StyleProvider
 };

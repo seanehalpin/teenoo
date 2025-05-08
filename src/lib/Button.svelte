@@ -7,6 +7,7 @@
     small = false, 
     dropdown = false, 
     icon = false,
+    leftAlign = false,
     variant = "primary", 
     openModal = "", // ID of the modal to open
     onclick
@@ -27,7 +28,8 @@
   class="button {variant}" 
   class:dropdown={dropdown}
   class:icon={icon}
-  class:modal-trigger={!!openModal}
+  class:modal-trigger={!!openModal} 
+  class:left-align={leftAlign}
   onclick={handleClick}
   data-modal-target={openModal || undefined}
 >
@@ -66,6 +68,10 @@
 
     &:hover {
       filter: brightness(0.96);
+    }
+
+    &.left-align {
+      justify-content: flex-start;
     }
 
     &.stretch {

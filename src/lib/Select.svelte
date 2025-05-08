@@ -21,7 +21,7 @@
   let id = `select-${randomId}`;
 
   function toggleDropdown() {
-    console.log("toggleDropdown", open);
+    // console.log("toggleDropdown", open);
     if (!disabled) {
       open = !open;
     }

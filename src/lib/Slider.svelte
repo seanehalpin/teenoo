@@ -16,8 +16,11 @@
     showOutput = true,
     formatFn = (val: number) => val.toString(), // Function to format the displayed value
     onchange = undefined,
-    oninput = undefined
+    oninput = undefined,
+    transition = null
   } = $props();
+
+  
 
   let trackRef: HTMLDivElement;
   let isDragging = false;
@@ -186,7 +189,7 @@
 </script>
 
 <StyleProvider>
-  <div class="range-container" class:fullWidth={stretch}>
+  <div class="range-container" class:fullWidth={stretch} use:transition>
     {#if label}
       <label class="range-label" for={id}>{label}</label>
     {/if}
