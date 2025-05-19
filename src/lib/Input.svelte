@@ -150,7 +150,7 @@
     outline: none;
     background: transparent;
     color: var(--ds-textPrimary);
-    height: var(--32px);
+    height: calc(var(--32px) - 2px);
 
     &.search {
       padding-left: var(--32px);

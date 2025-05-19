@@ -5,6 +5,7 @@
   type TableRow = Record<string, string>;
 
   let {
+    onclick = (event: MouseEvent, linkName: string) => {},
     data = [
       {
       name: "Send interactive messages in Slack",
@@ -26,13 +27,21 @@
       }
     ] as TableRow[],
     className = "",
-  } = $props();
+  } = $props<{
+    onclick?: (event: MouseEvent, linkName: string) => void;
+  }>();
 
   // Extract column headers from the first row if available
   let headers = $derived(() => {
     if (data.length === 0) return [];
     return Object.keys(data[0]);
   });
+
+  function handleClick(event: MouseEvent, linkName: any) {
+    onclick(event, linkName);
+  }
+
+  
 </script>
 
 <StyleProvider>
@@ -49,7 +58,7 @@
       </thead>
       <tbody>
         {#each data as row}
-          <tr>
+          <tr onclick={(e) => handleClick(e, row)}>
             {#each headers() as key}
               <td>
                 <Text>{row[key]}</Text>

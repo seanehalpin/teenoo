@@ -35,6 +35,7 @@
     background = "transparent",
     width = "auto",
     height = "auto",
+    flex = false,
     class: customClass = '',
   } = $props();
   
@@ -89,6 +90,7 @@
     class:bottom-center={bottomCenter} 
     class:bottom-right={bottomRight} 
     class:gap-auto={gapAuto}
+    class:flex={flex}
   >
   {@render children?.()}
 </div>
@@ -100,6 +102,10 @@
     display: flex;
     position: relative;
     box-sizing: border-box;
+
+    &.flex {
+      flex: 1;
+    }
 
     &.vertical {
       flex-direction: column;

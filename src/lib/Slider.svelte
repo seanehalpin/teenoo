@@ -278,7 +278,7 @@
   .range-container {
     display: flex;
     flex-direction: column;
-    gap: var(--8px);
+    gap: var(--4px);
     
     &.fullWidth {
       width: 100%;
