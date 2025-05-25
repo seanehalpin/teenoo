@@ -9,6 +9,7 @@
     rows = 3,
     maxlength = undefined,
     stretch = true,
+    resize = false,
     onchange = undefined,
     oninput = undefined,
     onfocus = undefined,
@@ -28,7 +29,8 @@
     <div class="textarea-holder" class:hasError={error} class:disabled={disabled}>
       <textarea
         id={id}
-        class="textarea"
+        class="textarea" 
+        class:resize={resize}
         {placeholder}
         bind:value={value}
         {disabled}
@@ -115,14 +117,18 @@
     box-sizing: border-box;
     width: 100%;
     font-family: var(--font-base);
-    font-size: var(--14px);
+    font-size: var(--12px);
     padding: var(--8px) var(--12px);
     border: none;
     outline: none;
     background: transparent;
     color: var(--ds-textPrimary);
-    resize: vertical;
+    resize: none;
     min-height: calc(var(--32px) * 3);
+
+    &.resize {
+      resize: vertical;
+    }
     
     &::placeholder {
       color: var(--ds-textTertiary);
