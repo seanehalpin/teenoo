@@ -9,8 +9,8 @@
     icon = false,
     leftAlign = false,
     variant = "primary", 
-    openModal = "", // ID of the modal to open
-    onclick
+    openModal = "",
+    onclick = undefined
   } = $props();
 
   // Handle click event
@@ -101,7 +101,6 @@
       &.icon {
         width: var(--24px);
         height: var(--24px);
-
         padding: 0;
 
         .icon-holder {
@@ -113,6 +112,7 @@
 
     &.primary {
       font-weight: 600;
+
       &:hover {
         background: var(--button-bg-hover, var(--ds-primary));
         color: var(--button-color, var(--ds-textWhite));
