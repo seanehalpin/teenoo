@@ -1,7 +1,8 @@
 <script lang="ts">
   import StyleProvider from './StyleProvider.svelte';
   
-  let { 
+  let {
+    spaced = false,
     checked = $bindable(false),
     disabled = false,
     id = "switch" + Math.random().toString(36).substring(2, 15),
@@ -24,6 +25,7 @@
   <div 
     class="switch-container"
     class:disabled={disabled}
+    class:spaced={spaced}
   >
     {#if label}
       <label for={id} class="switch-label">
@@ -61,6 +63,10 @@
     &.disabled {
       opacity: 0.5;
       cursor: not-allowed;
+    }
+
+    &.spaced {
+      justify-content: space-between;
     }
   }
   
