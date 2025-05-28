@@ -3,7 +3,7 @@
   let { 
     inputType = "text", 
     placeholder = "", 
-    value = "", 
+    value = $bindable(""), 
     label = "", 
     error = "", 
     disabled = false, 
