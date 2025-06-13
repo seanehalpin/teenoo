@@ -2,7 +2,7 @@
   import StyleProvider from './StyleProvider.svelte';
   let { 
     placeholder = "", 
-    value = "", 
+    value = $bindable(""), 
     label = "", 
     error = "", 
     disabled = false,
