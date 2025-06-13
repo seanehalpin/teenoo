@@ -1,6 +1,6 @@
 {
   "name": "teenoo",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Reusable Svelte component library for tino prototyping",
   "type": "module",
   "exports": {
