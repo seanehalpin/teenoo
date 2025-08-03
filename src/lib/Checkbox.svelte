@@ -68,6 +68,10 @@
   .checkbox-wrapper {
     display: flex;
     align-items: center;
+    width: var(--24px);
+    height: var(--24px);
+    position: relative;
+    justify-content: center;
   }
   
   .checkbox-label {
@@ -87,8 +91,8 @@
   
   .checkbox {
     position: relative;
-    width: 16px;
-    height: 16px;
+    width: var(--16px);
+    height: var(--16px);
     padding: 0;
     border: 1px solid var(--ds-borderPrimary);
     border-radius: calc(var(--4px) + 1px);
