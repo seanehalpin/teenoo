@@ -55,9 +55,9 @@
 
 <style lang="scss">
   .checkbox-container {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: var(--8px);
+    justify-content: center;
     
     &.disabled {
       opacity: 0.5;
