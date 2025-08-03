@@ -8,7 +8,7 @@
     label = "",
     id = "checkbox" + Math.random().toString(36).substring(2, 15),
     name = "",
-    ariaLabel = ""
+    ariaLabel = "",
   } = $props();
   
   function handleChange() {
@@ -40,20 +40,7 @@
         disabled={disabled}
       >
         {#if checked}
-          <svg 
-            class="checkbox-icon" 
-            viewBox="0 0 16 16" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path 
-              d="M13.5 4.5L6 12L2.5 8.5" 
-              stroke="currentColor" 
-              stroke-width="2" 
-              stroke-linecap="round" 
-              stroke-linejoin="round"
-            />
-          </svg>
+          <svg class="checkbox-icon"  width="8px" height="8px"><path d="M1 3.9 L 3.25 6 L 7 2.5" fill="transparent" stroke-width="1.5" stroke="var(--ds-textWhite)" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1"></path></svg>
         {/if}
       </button>
     </div>
@@ -85,7 +72,7 @@
   
   .checkbox-label {
     font-family: var(--font-base);
-    font-size: var(--14px);
+    font-size: var(--12px);
     color: var(--ds-textPrimary);
     cursor: pointer;
     
@@ -104,8 +91,8 @@
     height: 16px;
     padding: 0;
     border: 1px solid var(--ds-borderPrimary);
-    border-radius: var(--4px);
-    background-color: var(--ds-controlPrimary);
+    border-radius: calc(var(--4px) + 1px);
+    background-color: var(--ds-surfacePrimary);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -129,18 +116,15 @@
     
     &.disabled {
       cursor: not-allowed;
-      background-color: var(--ds-controlDisabled, #f5f5f5);
-      border-color: var(--ds-borderDisabled, #d0d0d0);
+      background-color: var(--ds-slate08);
     }
     
     &.error:not(.checked) {
-      border-color: var(--ds-error, #dc3545);
+      border-color: var(--ds-error, var(--ds-red));
     }
   }
   
   .checkbox-icon {
-    width: 12px;
-    height: 12px;
     pointer-events: none;
   }
 </style>
