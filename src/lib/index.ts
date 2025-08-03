@@ -16,6 +16,7 @@ import Text from './Text.svelte';
 import Table from './Table.svelte';
 import Embed from './Embed.svelte';
 import Tabs from './Tabs.svelte';
+import Checkbox from './Checkbox.svelte';
 import { showToast } from './toastUtils';
 import StyleProvider from './StyleProvider.svelte';
 
@@ -37,6 +38,7 @@ export {
   Text,
   Table,
   Tabs,
+  Checkbox,
   showToast,
   Embed,
   StyleProvider
@@ -60,6 +62,7 @@ export const components = {
   Text,
   Table,
   Tabs,
+  Checkbox,
   Embed,
   StyleProvider
 };
