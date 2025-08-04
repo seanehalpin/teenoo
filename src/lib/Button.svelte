@@ -7,7 +7,8 @@
     small = false, 
     dropdown = false, 
     icon = false,
-    leftAlign = false,
+    leftAlign = false, 
+    disabled = $bindable(false),
     variant = "primary", 
     openModal = "",
     onclick = undefined,
@@ -33,7 +34,8 @@
   class:left-align={leftAlign}
   onclick={handleClick}
   data-modal-target={openModal || undefined}
-  style={style}
+  style={style} 
+  disabled={disabled}
 >
 
   {#if icon}
@@ -70,6 +72,11 @@
 
     &:hover {
       filter: brightness(0.96);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      pointer-events: none;
     }
 
     &.left-align {
