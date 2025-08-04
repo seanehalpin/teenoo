@@ -109,7 +109,7 @@
     }
     
     &:hover:not(.disabled) {
-      border-color: var(--ds-primary);
+      /* border-color: var(--ds-primary); */
     }
     
     &.checked {

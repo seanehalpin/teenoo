@@ -10,7 +10,8 @@
     leftAlign = false,
     variant = "primary", 
     openModal = "",
-    onclick = undefined
+    onclick = undefined,
+    style = ""
   } = $props();
 
   // Handle click event
@@ -32,6 +33,7 @@
   class:left-align={leftAlign}
   onclick={handleClick}
   data-modal-target={openModal || undefined}
+  style={style}
 >
 
   {#if icon}
