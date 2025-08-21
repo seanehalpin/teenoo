@@ -17,6 +17,10 @@
     fill: currentColor !important;
   }
 
+  :global(.icon-holder.nofill svg) {
+    fill: transparent !important;
+  }
+
   :global(:root) {
   --font-base: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   --font-mono: "JetBrains Mono", 'roboto mono', "Roboto Mono", Menlo, Monaco, monospace;

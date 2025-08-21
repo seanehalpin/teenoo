@@ -12,7 +12,8 @@
     variant = "primary", 
     openModal = "",
     onclick = undefined,
-    style = ""
+    style = "",
+    nofill = $bindable(false)
   } = $props();
 
   // Handle click event
@@ -39,7 +40,7 @@
 >
 
   {#if icon}
-  <span class="icon-holder">{@render children?.()} </span>
+  <span class="icon-holder" class:nofill={nofill}>{@render children?.()} </span>
   {:else}
   {@render children?.()} 
   {/if}
