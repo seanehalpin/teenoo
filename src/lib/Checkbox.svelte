@@ -3,6 +3,7 @@
   
   let {
     checked = $bindable(false),
+    indeterminate = $bindable(false),
     disabled = false,
     error = false,
     label = "",
@@ -13,7 +14,12 @@
   
   function handleChange() {
     if (!disabled) {
-      checked = !checked;
+      if (indeterminate) {
+        indeterminate = false;
+        checked = true;
+      } else {
+        checked = !checked;
+      }
     }
   }
 </script>
@@ -28,18 +34,21 @@
       <button
         type="button"
         role="checkbox"
-        aria-checked={checked}
+        aria-checked={indeterminate ? "mixed" : checked}
         aria-label={ariaLabel || label || "Checkbox"}
         id={id}
         name={name}
         class="checkbox"
         class:checked={checked}
+        class:indeterminate={indeterminate}
         class:disabled={disabled}
         class:error={error}
         onclick={handleChange}
         disabled={disabled}
       >
-        {#if checked}
+        {#if indeterminate}
+          <svg class="checkbox-icon" width="8px" height="2px"><rect x="0" y="0" width="8" height="2" fill="var(--ds-textWhite)" rx="1"></rect></svg>
+        {:else if checked}
           <svg class="checkbox-icon"  width="8px" height="8px"><path d="M1 3.9 L 3.25 6 L 7 2.5" fill="transparent" stroke-width="1.5" stroke="var(--ds-textWhite)" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1"></path></svg>
         {/if}
       </button>
@@ -113,6 +122,12 @@
     }
     
     &.checked {
+      background-color: var(--ds-primary);
+      border-color: var(--ds-primary);
+      color: white;
+    }
+    
+    &.indeterminate {
       background-color: var(--ds-primary);
       border-color: var(--ds-primary);
       color: white;
