@@ -219,7 +219,7 @@
   --ds-actionBarBackground: #FFFFFF;
 }
 
-:global(.dark) {
+:global(.dark, .figma-dark) {
   --ds-primary: #8D75E6;
   --ds-primary75: #8D75E6BF;
   --ds-primary56: #8D75E68F;
