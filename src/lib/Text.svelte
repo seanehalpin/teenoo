@@ -20,7 +20,8 @@
     // Additional styles
     color = "",
     className = "",
-    
+    pretty = false,
+
     // Optional HTML element to render
     as = "span",
   } = $props();
@@ -47,10 +48,13 @@
   
   // Combine all classes
   let textClass = $derived(() => {
+    let baseClass = "";
     if (headingClass()) {
-      return `text-${headingClass()}`;
+      baseClass = `text-${headingClass()}`;
+    } else {
+      baseClass = `text-${sizeClass()}-${typeClass()}`;
     }
-    return `text-${sizeClass()}-${typeClass()}`;
+    return pretty ? `${baseClass} pretty` : baseClass;
   });
   
   // Custom text color if provided
@@ -182,5 +186,10 @@
     font-size: var(--18px);
     font-weight: 700;
     letter-spacing: -0.4px;
+  }
+  
+  /* Pretty text wrapping */
+  .pretty {
+    text-wrap: pretty;
   }
 </style>
