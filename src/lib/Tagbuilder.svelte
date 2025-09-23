@@ -4,7 +4,7 @@
   type Tag = { id: string; text: string; };
   
   let { 
-    tags = [],
+    tags = $bindable([]),
     label = "",
     placeholder = "Add tags",
     error = "",
@@ -172,7 +172,7 @@
 
   .tagbuilder-label {
     font-family: var(--font-base);
-    font-size: var(--10px);
+    font-size: var(--12px);
     color: var(--ds-textSecondary);
     font-weight: 500;
   
