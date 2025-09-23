@@ -1,7 +1,6 @@
 <script lang="ts">
   import StyleProvider from './StyleProvider.svelte';
   
-  type Tag = { id: string; text: string; };
   
   let { 
     tags = $bindable([]),
@@ -14,7 +13,7 @@
     onchange = undefined
   } = $props();
 
-  let inputValue = "";
+  let inputValue = $state("");
   let inputRef: HTMLInputElement;
   let randomId = Math.random().toString(36).substring(2, 15);
   let id = `tagbuilder-${randomId}`;
@@ -26,7 +25,7 @@
       event.preventDefault();
       addTag();
     } else if (event.key === 'Backspace' && !inputValue && tags.length > 0) {
-      removeTag(tags[tags.length - 1].id);
+      removeTag(tags[tags.length - 1]);
     }
   }
 
@@ -38,18 +37,13 @@
     if (maxTags !== undefined && tags.length >= maxTags) return;
     
     // Check for duplicates
-    const isDuplicate = tags.some(tag => tag.text.toLowerCase() === trimmedValue.toLowerCase());
+    const isDuplicate = tags.some(tag => tag.toLowerCase() === trimmedValue.toLowerCase());
     if (isDuplicate) {
       inputValue = "";
       return;
     }
     
-    const newTag: Tag = {
-      id: crypto.randomUUID ? crypto.randomUUID() : `tag-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      text: trimmedValue
-    };
-    
-    tags = [...tags, newTag];
+    tags = [...tags, trimmedValue];
     // Force reset input value to empty string
     setTimeout(() => {
       inputValue = "";
@@ -63,10 +57,10 @@
     }
   }
 
-  function removeTag(id: string) {
+  function removeTag(tagText: string) {
     if (disabled) return;
     
-    tags = tags.filter(tag => tag.id !== id);
+    tags = tags.filter(tag => tag !== tagText);
     
     if (onchange) {
       onchange(tags);
@@ -115,18 +109,18 @@
       class:noBorder={tags.length === 0}
     >
       <div class="tagbuilder-tags">
-        {#each tags as tag (tag.id)}
+        {#each tags as tag (tag)}
           <div class="tag" >
-            <span class="tag-text">{tag.text}</span>
+            <span class="tag-text">{tag}</span>
             <button 
               type="button" 
               class="tag-remove" 
               onclick={(e) => {
                 e.stopPropagation();
-                removeTag(tag.id);
+                removeTag(tag);
               }}
               disabled={disabled}
-              aria-label={`Remove ${tag.text}`}
+              aria-label={`Remove ${tag}`}
             >
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
               <g opacity="0.5">
