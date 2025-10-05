@@ -10,6 +10,7 @@
     label = "", 
     error = "", 
     disabled = false, 
+    alignRight = false,
     stretch = true,
     placeholder = "Select option(s)",
     onchange = undefined
@@ -102,7 +103,7 @@
         </svg>
       </div>
       {#if open}
-        <div class="select-dropdown">
+        <div class="select-dropdown" class:right={alignRight}>
           {#each options as option}
             <div 
               class="select-option" 
@@ -219,6 +220,7 @@
   
   .select-dropdown {
     position: absolute;
+    min-width: 120px;
     top: calc(100% + var(--4px));
     left: 0;
     right: 0;
@@ -231,6 +233,11 @@
     max-height: 200px;
     overflow-y: auto;
     box-shadow: 0 0 0 1px var(--ds-borderSecondary), 0px 154px 43px 0px rgba(0, 0, 0, 0.00), 0px 98px 39px 0px rgba(0, 0, 0, 0.01), 0px 55px 33px 0px rgba(0, 0, 0, 0.03), 0px 25px 25px 0px rgba(0, 0, 0, 0.05), 0px 6px 14px 0px rgba(0, 0, 0, 0.06);
+
+    &.right {
+      left: auto;
+      right: 0;
+    }
   }
   
   .select-option {
