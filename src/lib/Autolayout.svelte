@@ -1,13 +1,13 @@
 <script lang="ts">
   import StyleProvider from './StyleProvider.svelte';
 
-  let { 
-    children, 
-    vertical = false, 
-    wrap = false, 
-    onclick, 
-    inspect = false, 
-    auto = false, 
+  let {
+    children,
+    vertical = false,
+    wrap = false,
+    onclick = undefined,
+    inspect = false,
+    auto = false,
     fillWidth = false,
     topLeft = false,
     topCenter = false,
@@ -31,6 +31,7 @@
     borderBottom = false,
     borderWeight = 1,
     borderColor = 'primary', // primary, secondary, strong
+    borderRadius = '',
     gap = '',
     background = "transparent",
     width = "auto",
@@ -58,9 +59,9 @@
 <StyleProvider>
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<div 
-    {onclick} 
-    class="autolayout {customClass}" 
+<div
+    {onclick}
+    class="autolayout {customClass}"
     style:padding-left={paddingLeft || undefined}
     style:padding-right={paddingRight || undefined}
     style:padding-top={paddingTop || undefined}
@@ -71,15 +72,16 @@
     style:border-top={borderTop ? borderStyle() : undefined}
     style:border-bottom={borderBottom ? borderStyle() : undefined}
     style:border={border ? borderStyle() : undefined}
+    style:border-radius={borderRadius || undefined}
     style:gap={gap || undefined}
     style:width={width || undefined}
     style:height={height || undefined}
     style:background={background || undefined}
-    class:fill-width={fillWidth} 
-    class:auto={auto} 
-    class:vertical={vertical} 
-    class:inspect={inspect} 
-    class:wrap={wrap} 
+    class:fill-width={fillWidth}
+    class:auto={auto}
+    class:vertical={vertical}
+    class:inspect={inspect}
+    class:wrap={wrap}
     class:top-left={topLeft}
     class:top-center={topCenter}
     class:top-right={topRight}
@@ -87,8 +89,8 @@
     class:center={center}
     class:right={right}
     class:bottom-left={bottomLeft}
-    class:bottom-center={bottomCenter} 
-    class:bottom-right={bottomRight} 
+    class:bottom-center={bottomCenter}
+    class:bottom-right={bottomRight}
     class:gap-auto={gapAuto}
     class:flex={flex}
   >
