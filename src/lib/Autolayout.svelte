@@ -32,6 +32,10 @@
     borderWeight = 1,
     borderColor = 'primary', // primary, secondary, strong
     borderRadius = '',
+    borderRadiusTopLeft = '',
+    borderRadiusTopRight = '',
+    borderRadiusBottomLeft = '',
+    borderRadiusBottomRight = '',
     gap = '',
     background = "transparent",
     width = "auto",
@@ -73,6 +77,10 @@
     style:border-bottom={borderBottom ? borderStyle() : undefined}
     style:border={border ? borderStyle() : undefined}
     style:border-radius={borderRadius || undefined}
+    style:border-top-left-radius={borderRadiusTopLeft || undefined}
+    style:border-top-right-radius={borderRadiusTopRight || undefined}
+    style:border-bottom-left-radius={borderRadiusBottomLeft || undefined}
+    style:border-bottom-right-radius={borderRadiusBottomRight || undefined}
     style:gap={gap || undefined}
     style:width={width || undefined}
     style:height={height || undefined}
