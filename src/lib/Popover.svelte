@@ -12,12 +12,12 @@
     width = 'auto',
     height = 'auto',
     background = 'var(--ds-surfacePrimary)',
-    border = true,
+    border = false,
     borderWeight = 1,
-    borderColor = 'primary',
+    borderColor = 'secondary',
     borderRadius = '8px',
     padding = '',
-    boxShadow = '0 4px 16px rgba(0, 0, 0, 0.1)',
+    boxShadow = '1px solid var(--ds-borderSecondary), 0 154px 43px 0 rgba(0, 0, 0, 0.00), 0 98px 39px 0 rgba(0, 0, 0, 0.01), 0 55px 33px 0 rgba(0, 0, 0, 0.03), 0 25px 25px 0 rgba(0, 0, 0, 0.05), 0 6px 14px 0 rgba(0, 0, 0, 0.06)',
     class: customClass = '',
   } = $props();
 
