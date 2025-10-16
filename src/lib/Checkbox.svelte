@@ -105,7 +105,7 @@
     padding: 0;
     border: 1px solid var(--ds-borderPrimary);
     border-radius: calc(var(--4px) + 1px);
-    background-color: var(--ds-surfacePrimary);
+    background-color: var(--ds-checkboxUnchecked);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -122,20 +122,20 @@
     }
     
     &.checked {
-      background-color: var(--ds-primary);
-      border-color: var(--ds-primary);
+      background-color: var(--ds-checkboxEnabled);
+      border-color: var(--ds-checkboxEnabled);
       color: white;
     }
     
     &.indeterminate {
-      background-color: var(--ds-primary);
-      border-color: var(--ds-primary);
+      background-color: var(--ds-checkboxEnabled);
+      border-color: var(--ds-checkboxEnabled);
       color: white;
     }
     
     &.disabled {
       cursor: not-allowed;
-      background-color: var(--ds-slate08);
+      background-color: var(--ds-checkboxDisabled);
     }
     
     &.error:not(.checked) {
