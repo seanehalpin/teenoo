@@ -16,6 +16,7 @@
     // Heading styles
     heading = false,
     title = false,
+    jumbo = false,
     
     // Additional styles
     color = "",
@@ -43,6 +44,7 @@
   let headingClass = $derived(() => {
     if (title) return "title";
     if (heading) return "heading";
+    if (jumbo) return "jumbo";
     return ""; // Not a heading
   });
   
@@ -71,6 +73,10 @@
     <p class={`tino-text ${textClass()} ${className}`} style={customStyle()}>
       {@render children?.()}
     </p>
+  {:else if as === "jumbo"}
+  <h1 class={`tino-text ${textClass()} ${className}`} style={customStyle()}>
+    {@render children?.()}
+  </h1>
   {:else if as === "h1"}
     <h1 class={`tino-text ${textClass()} ${className}`} style={customStyle()}>
       {@render children?.()}
@@ -186,6 +192,12 @@
     font-size: var(--18px);
     font-weight: 700;
     letter-spacing: -0.4px;
+  }
+
+  .text-jumbo {
+    font-size: var(--24px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
   }
   
   /* Pretty text wrapping */
