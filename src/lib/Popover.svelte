@@ -18,7 +18,7 @@
     borderRadius = 'var(--12px)',
     padding = 'var(--12px)',
     boxShadow = 'inset 0 0 0 1px var(--ds-borderSecondary), 0 154px 43px 0 rgba(0, 0, 0, 0.00), 0 98px 39px 0 rgba(0, 0, 0, 0.01), 0 55px 33px 0 rgba(0, 0, 0, 0.03), 0 25px 25px 0 rgba(0, 0, 0, 0.05), 0 6px 14px 0 rgba(0, 0, 0, 0.06)',
-    class: customClass = '',
+    style = '',
   } = $props();
 
   // Map border color names to CSS variables
@@ -39,7 +39,8 @@
 
 <StyleProvider>
   <div
-    class="popover {customClass}"
+    class="popover"
+    {style}
     style:position={position}
     style:z-index={zIndex}
     style:top={top || undefined}
