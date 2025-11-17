@@ -138,9 +138,9 @@
   --ds-borderStrong: #14141414;
   --ds-borderHover: #1414140A;
   --ds-borderLightOnly: #1414140D;
-  --ds-textPrimary: #333333;
+  --ds-textPrimary: #0D0D0D;
   --ds-textSecondary: #4D4D4D;
-  --ds-textTertiary: #AAAAAA;
+  --ds-textTertiary: #757575;
   --ds-textInvert: #FFFFFF;
   --ds-controlPrimary: #8D75E6;
   --ds-controlPrimaryHover: #7F69CE;
@@ -304,8 +304,8 @@
   --ds-borderHover: #FFFFFF0A;
   --ds-borderLightOnly: #00000000;
   --ds-textPrimary: #FFFFFF;
-  --ds-textSecondary: #777777;
-  --ds-textTertiary: #555555;
+  --ds-textSecondary: #FFFFFFBF;
+  --ds-textTertiary: #FFFFFFA3;
   --ds-textInvert: #333333;
   --ds-controlPrimary: #8D75E6;
   --ds-controlPrimaryHover: #7F69CE;
