@@ -139,7 +139,7 @@
   --ds-borderHover: #1414140A;
   --ds-borderLightOnly: #1414140D;
   --ds-textPrimary: #333333;
-  --ds-textSecondary: #7F7F7F;
+  --ds-textSecondary: #4D4D4D;
   --ds-textTertiary: #AAAAAA;
   --ds-textInvert: #FFFFFF;
   --ds-controlPrimary: #8D75E6;
