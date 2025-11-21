@@ -1,7 +1,7 @@
 <script lang="ts">
   import StyleProvider from './StyleProvider.svelte';
   
-  let { 
+  let {
     showModal = $bindable(false),
     id = "modal-" + Math.random().toString(36).substring(2, 15),
     title = "",
@@ -9,6 +9,8 @@
     footer,
     closeButton = false,
     fixed = true,
+    large = false,
+    xl = false,
   } = $props();
   
   // Function to close the modal
@@ -75,7 +77,7 @@
     >
 
     </div>
-      <div class="modal" role="dialog" aria-modal="true" aria-labelledby={`modal-title-${id}`}>
+      <div class="modal" class:large class:xl role="dialog" aria-modal="true" aria-labelledby={`modal-title-${id}`}>
         <div class="modal-header">
           {#if title}
             <h2 id={`modal-title-${id}`} class="modal-title">{title}</h2>
@@ -142,10 +144,17 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 456px; // Default size
+    max-width: 456px; // Medium size (default)
     position: relative;
     z-index: 100000;
-    
+
+    &.large {
+      max-width: 800px;
+    }
+
+    &.xl {
+      max-width: 1000px;
+    }
   }
   
   .modal-header {
