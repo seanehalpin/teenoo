@@ -10,7 +10,6 @@ Quick copy-paste examples for common use cases.
 
   let email = $state("");
   let password = $state("");
-  let emailError = $state("");
 
   function handleSubmit() {
     if (!email.includes('@')) {
@@ -21,13 +20,12 @@ Quick copy-paste examples for common use cases.
   }
 </script>
 
-<T.Autolayout vertical gap="16px" padding="20px">
+<T.Autolayout vertical gap="16px" padding="var(--20px)">
   <T.Text heading>Sign In</T.Text>
 
   <T.Input
     bind:value={email}
     label="Email"
-    error={emailError}
     inputType="email"
   />
 
@@ -62,9 +60,7 @@ Quick copy-paste examples for common use cases.
 </T.Button>
 
 <T.Modal bind:showModal title="Confirm Action" closeButton>
-  {#snippet children()}
-    <T.Text>Are you sure you want to proceed?</T.Text>
-  {/snippet}
+  <T.Text>Are you sure you want to proceed?</T.Text>
 
   {#snippet footer()}
     <T.Autolayout gap="8px">
@@ -96,13 +92,13 @@ Quick copy-paste examples for common use cases.
   ];
 </script>
 
-<T.Autolayout vertical gap="20px" padding="20px">
+<T.Autolayout vertical gap="var(--20px)" padding="var(--20px)">
   <T.Text title>Settings</T.Text>
 
   <T.Tabs bind:activeTab tabs={tabs} />
 
   {#if activeTab === 'general'}
-    <T.Autolayout vertical gap="12px">
+    <T.Autolayout vertical gap="var(--12px)">
       <T.Switch
         bind:checked={darkMode}
         label="Dark mode"
@@ -111,12 +107,12 @@ Quick copy-paste examples for common use cases.
       <T.Input label="Username" value="john_doe" />
     </T.Autolayout>
   {:else if activeTab === 'privacy'}
-    <T.Autolayout vertical gap="12px">
+    <T.Autolayout vertical gap="var(--12px)">
       <T.Checkbox label="Make profile public" />
       <T.Checkbox label="Show email address" />
     </T.Autolayout>
   {:else}
-    <T.Autolayout vertical gap="12px">
+    <T.Autolayout vertical gap="var(--12px)">
       <T.Switch
         bind:checked={notifications}
         label="Push notifications"
@@ -140,11 +136,11 @@ Quick copy-paste examples for common use cases.
   ];
 </script>
 
-<T.Autolayout vertical gap="12px" padding="20px">
+<T.Autolayout vertical gap="var(--12px)" padding="var(--20px)">
   {#each users as user}
     <T.Autolayout
       left
-      gap="12px"
+      gap="var(--12px)"
       padding="16px"
       border
       borderRadius="8px"
@@ -203,7 +199,7 @@ Quick copy-paste examples for common use cases.
   let rangeEnd = $state(80);
 </script>
 
-<T.Autolayout vertical gap="20px" padding="20px">
+<T.Autolayout vertical gap="var(--20px)" padding="var(--20px)">
   <!-- Single handle -->
   <T.Slider
     bind:value={price}
@@ -235,7 +231,7 @@ Quick copy-paste examples for common use cases.
   let tags = $state(['svelte', 'typescript', 'ui']);
 </script>
 
-<T.Autolayout vertical gap="12px" padding="20px">
+<T.Autolayout vertical gap="var(--12px)" padding="var(--20px)">
   <T.Text heading>Technologies</T.Text>
 
   <T.Tagbuilder
@@ -251,7 +247,7 @@ Quick copy-paste examples for common use cases.
 </T.Autolayout>
 ```
 
-## Responsive Grid Layout
+## Responsive Flex Layout
 
 ```svelte
 <script>
@@ -264,7 +260,7 @@ Quick copy-paste examples for common use cases.
   ];
 </script>
 
-<T.Autolayout fillWidth wrap gap="16px" padding="20px">
+<T.Autolayout fillWidth wrap gap="16px" padding="var(--20px)">
   {#each cards as card}
     <T.Autolayout
       vertical

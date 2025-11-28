@@ -102,14 +102,7 @@ teenoo uses CSS variables for consistent styling:
 --font-base, --font-mono
 ```
 
-## Contributing
-
-This is a prototyping library for the tino ecosystem. For bugs or feature requests, please open an issue.
-
 ## License
 
 MIT
 
----
-
-**Note**: teenoo is designed for rapid prototyping. For production apps, consider component libraries like Shadcn-Svelte or Skeleton UI.
