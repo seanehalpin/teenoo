@@ -1,8 +1,28 @@
 {
   "name": "teenoo",
   "version": "0.0.42",
-  "description": "Reusable Svelte component library for tino prototyping",
+  "description": "Svelte 5 component library for rapid prototyping with visual layout tools",
   "type": "module",
+  "keywords": [
+    "svelte",
+    "svelte5",
+    "components",
+    "ui",
+    "prototyping",
+    "layout",
+    "design-system",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "tino",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/teenoo"
+  },
+  "homepage": "https://github.com/yourusername/teenoo#readme",
+  "bugs": {
+    "url": "https://github.com/yourusername/teenoo/issues"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -13,11 +33,20 @@
       "types": "./dist/index.d.ts",
       "svelte": "./dist/index.js",
       "default": "./dist/index.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
     }
   },
   "files": [
     "dist",
-    "src/lib/styles/variables.css"
+    "src/lib/styles/variables.css",
+    "README.md",
+    "LLM_README.md",
+    "CLAUDE.md",
+    "EXAMPLES.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "dev": "node node_modules/@sveltejs/package/src/cli.js watch",

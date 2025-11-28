@@ -27,6 +27,30 @@ import * as T from 'teenoo';
 
 // Utilities can be imported separately
 import { showToast } from 'teenoo';
+
+// TypeScript: Import types for props
+import type { ButtonProps, InputProps, ModalProps } from 'teenoo';
+```
+
+## TypeScript Types
+
+All component props have TypeScript interfaces with JSDoc comments. This enables:
+- **IDE autocomplete** with prop descriptions
+- **Type safety** when building wrapper components
+- **LLM understanding** of prop purposes without reading source code
+
+Example type usage:
+```typescript
+import type { ButtonProps, AutolayoutProps } from 'teenoo';
+
+// Extract specific prop types
+type ButtonVariant = ButtonProps['variant']; // "primary" | "secondary" | "flat"
+
+// Use in custom components
+interface MyButtonGroupProps {
+  variant: ButtonProps['variant'];
+  layout: Partial<AutolayoutProps>;
+}
 ```
 
 ## Available Components

@@ -21,6 +21,29 @@ import Popover from './Popover.svelte';
 import { showToast } from './toastUtils';
 import StyleProvider from './StyleProvider.svelte';
 
+// Export types for TypeScript users
+export type {
+  ButtonProps,
+  InputProps,
+  TextareaProps,
+  SelectProps,
+  SelectOption,
+  CheckboxProps,
+  SwitchProps,
+  SliderProps,
+  ModalProps,
+  TextProps,
+  AvatarProps,
+  AutolayoutProps,
+  TabsProps,
+  TabItem,
+  ToastProps,
+  PopoverProps,
+  TagbuilderProps,
+  EmbedProps,
+  ShowToastOptions
+} from './types';
+
 // Named exports for individual components
 export { 
   Button,
