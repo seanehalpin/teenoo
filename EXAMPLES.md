@@ -277,6 +277,129 @@ Quick copy-paste examples for common use cases.
 </T.Autolayout>
 ```
 
+## Nested Autolayouts (Complex Layout)
+
+```svelte
+<script>
+  import * as T from 'teenoo';
+
+  let darkMode = $state(false);
+  let notifications = $state(true);
+
+  const stats = [
+    { label: 'Users', value: '1,234' },
+    { label: 'Revenue', value: '$45.6k' },
+    { label: 'Growth', value: '+12%' }
+  ];
+</script>
+
+<!-- Main container: vertical layout -->
+<T.Autolayout vertical gap="var(--20px)" padding="var(--20px)" fillWidth>
+
+  <!-- Header: horizontal layout with space between -->
+  <T.Autolayout auto left gap="var(--16px)">
+    <T.Autolayout left gap="var(--12px)">
+      <T.Avatar name="Dashboard" team color="primary" />
+      <T.Text heading>Dashboard</T.Text>
+    </T.Autolayout>
+
+    <T.Autolayout gap="var(--8px)">
+      <T.Switch bind:checked={darkMode} label="Dark" />
+      <T.Button variant="secondary" small>Settings</T.Button>
+    </T.Autolayout>
+  </T.Autolayout>
+
+  <!-- Stats grid: horizontal layout with equal flex -->
+  <T.Autolayout gap="var(--16px)" fillWidth>
+    {#each stats as stat}
+      <T.Autolayout
+        vertical
+        center
+        gap="var(--8px)"
+        padding="var(--20px)"
+        border
+        borderRadius="12px"
+        flex
+      >
+        <T.Text small color="var(--ds-textSecondary)">{stat.label}</T.Text>
+        <T.Text title>{stat.value}</T.Text>
+      </T.Autolayout>
+    {/each}
+  </T.Autolayout>
+
+  <!-- Content area: two-column layout -->
+  <T.Autolayout gap="var(--20px)" fillWidth>
+
+    <!-- Left column: vertical stack -->
+    <T.Autolayout
+      vertical
+      gap="var(--16px)"
+      padding="var(--20px)"
+      border
+      borderRadius="12px"
+      flex
+    >
+      <T.Text strong>Recent Activity</T.Text>
+
+      {#each [1, 2, 3] as item}
+        <T.Autolayout
+          left
+          gap="var(--12px)"
+          padding="var(--12px)"
+          borderRadius="8px"
+          background="var(--ds-surfaceSecondary)"
+        >
+          <T.Avatar size="small" avatarNum={item} />
+          <T.Autolayout vertical gap="var(--4px)">
+            <T.Text small strong>Activity {item}</T.Text>
+            <T.Text tiny color="var(--ds-textTertiary)">2 hours ago</T.Text>
+          </T.Autolayout>
+        </T.Autolayout>
+      {/each}
+    </T.Autolayout>
+
+    <!-- Right column: vertical stack -->
+    <T.Autolayout
+      vertical
+      gap="var(--16px)"
+      padding="var(--20px)"
+      border
+      borderRadius="12px"
+      flex
+    >
+      <T.Autolayout auto left>
+        <T.Text strong>Quick Actions</T.Text>
+        <T.Button variant="flat" small icon>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg>
+        </T.Button>
+      </T.Autolayout>
+
+      <T.Autolayout vertical gap="var(--8px)">
+        <T.Button stretch variant="secondary">Create Report</T.Button>
+        <T.Button stretch variant="secondary">Export Data</T.Button>
+        <T.Button stretch variant="secondary">Invite User</T.Button>
+      </T.Autolayout>
+    </T.Autolayout>
+  </T.Autolayout>
+
+  <!-- Footer: centered horizontal layout -->
+  <T.Autolayout
+    center
+    gap="var(--12px)"
+    padding="var(--16px)"
+    borderTop
+  >
+    <T.Switch
+      bind:checked={notifications}
+      label="Enable notifications"
+      spaced
+    />
+  </T.Autolayout>
+</T.Autolayout>
+```
+
 ## TypeScript Usage
 
 ```typescript

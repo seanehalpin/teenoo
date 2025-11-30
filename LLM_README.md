@@ -69,6 +69,8 @@ interface MyButtonGroupProps {
 
 **Purpose**: Flexbox layout container with extensive alignment and spacing controls.
 
+> **Note**: All Autolayout props (except `children` and `onclick`) are bindable, enabling dynamic layout control.
+
 **Props**:
 - `vertical` (boolean, default: false) - Sets flex-direction to column
 - `wrap` (boolean, default: false) - Enables flex-wrap
@@ -107,11 +109,24 @@ interface MyButtonGroupProps {
 ```svelte
 <script>
   import * as T from 'teenoo';
+
+  // Bindable props enable dynamic layout control
+  let isVertical = $state(false);
+  let layoutGap = $state("16px");
 </script>
 
+<!-- Static props -->
 <T.Autolayout vertical gap="16px" padding="20px">
   <T.Button>Click me</T.Button>
   <T.Input placeholder="Enter text" />
+</T.Autolayout>
+
+<!-- Bindable props for dynamic control -->
+<T.Autolayout bind:vertical={isVertical} bind:gap={layoutGap} padding="20px">
+  <T.Button onclick={() => isVertical = !isVertical}>
+    Toggle Direction
+  </T.Button>
+  <T.Slider bind:value={layoutGap} min={0} max={32} label="Gap" />
 </T.Autolayout>
 
 <T.Autolayout center fillWidth>

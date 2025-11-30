@@ -312,83 +312,83 @@ export interface AvatarProps {
 export interface AutolayoutProps {
   /** Layout content */
   children?: Snippet;
-  /** Vertical flex direction (column) */
+  /** Vertical flex direction (column) - bindable */
   vertical?: boolean;
-  /** Enable flex-wrap */
+  /** Enable flex-wrap - bindable */
   wrap?: boolean;
   /** Click event handler */
   onclick?: (event: MouseEvent) => void;
-  /** Debug outline */
+  /** Debug outline - bindable */
   inspect?: boolean;
-  /** Space-between layout */
+  /** Space-between layout - bindable */
   auto?: boolean;
-  /** Makes layout full width */
+  /** Makes layout full width - bindable */
   fillWidth?: boolean;
-  /** Align top-left */
+  /** Align top-left - bindable */
   topLeft?: boolean;
-  /** Align top-center */
+  /** Align top-center - bindable */
   topCenter?: boolean;
-  /** Align top-right */
+  /** Align top-right - bindable */
   topRight?: boolean;
-  /** Align left (vertically centered) */
+  /** Align left (vertically centered) - bindable */
   left?: boolean;
-  /** Align center (both axes) */
+  /** Align center (both axes) - bindable */
   center?: boolean;
-  /** Align right (vertically centered) */
+  /** Align right (vertically centered) - bindable */
   right?: boolean;
-  /** Align bottom-left */
+  /** Align bottom-left - bindable */
   bottomLeft?: boolean;
-  /** Align bottom-center */
+  /** Align bottom-center - bindable */
   bottomCenter?: boolean;
-  /** Align bottom-right */
+  /** Align bottom-right - bindable */
   bottomRight?: boolean;
-  /** Space-between layout (alias for auto) */
+  /** Space-between layout (alias for auto) - bindable */
   gapAuto?: boolean;
-  /** Padding for all sides (e.g., "16px") */
+  /** Padding for all sides (e.g., "16px") - bindable */
   padding?: string;
-  /** Left padding */
+  /** Left padding - bindable */
   paddingLeft?: string;
-  /** Right padding */
+  /** Right padding - bindable */
   paddingRight?: string;
-  /** Top padding */
+  /** Top padding - bindable */
   paddingTop?: string;
-  /** Bottom padding */
+  /** Bottom padding - bindable */
   paddingBottom?: string;
-  /** Border on all sides */
+  /** Border on all sides - bindable */
   border?: boolean;
-  /** Left border only */
+  /** Left border only - bindable */
   borderLeft?: boolean;
-  /** Right border only */
+  /** Right border only - bindable */
   borderRight?: boolean;
-  /** Top border only */
+  /** Top border only - bindable */
   borderTop?: boolean;
-  /** Bottom border only */
+  /** Bottom border only - bindable */
   borderBottom?: boolean;
-  /** Border thickness in pixels */
+  /** Border thickness in pixels - bindable */
   borderWeight?: number;
-  /** Border color: "primary", "secondary", "strong" */
+  /** Border color: "primary", "secondary", "strong" - bindable */
   borderColor?: 'primary' | 'secondary' | 'strong';
-  /** Border radius for all corners */
+  /** Border radius for all corners - bindable */
   borderRadius?: string;
-  /** Top-left border radius */
+  /** Top-left border radius - bindable */
   borderRadiusTopLeft?: string;
-  /** Top-right border radius */
+  /** Top-right border radius - bindable */
   borderRadiusTopRight?: string;
-  /** Bottom-left border radius */
+  /** Bottom-left border radius - bindable */
   borderRadiusBottomLeft?: string;
-  /** Bottom-right border radius */
+  /** Bottom-right border radius - bindable */
   borderRadiusBottomRight?: string;
-  /** Gap between children (e.g., "16px") */
+  /** Gap between children (e.g., "16px") - bindable */
   gap?: string;
-  /** Background color */
+  /** Background color - bindable */
   background?: string;
-  /** Width (e.g., "100%", "500px") */
+  /** Width (e.g., "100%", "500px") - bindable */
   width?: string;
-  /** Height (e.g., "100%", "500px") */
+  /** Height (e.g., "100%", "500px") - bindable */
   height?: string;
-  /** Sets flex: 1 */
+  /** Sets flex: 1 - bindable */
   flex?: boolean;
-  /** Custom CSS class */
+  /** Custom CSS class - bindable */
   class?: string;
 }
 
