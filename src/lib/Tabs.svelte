@@ -91,7 +91,7 @@
     color: var(--ds-textSecondary);
     cursor: pointer;
     position: relative;
-    height: var(--22px);
+    height: var(--24px);
     padding: 0 var(--12px);
     border-radius: var(--4px);
     width: 100%;

@@ -140,6 +140,8 @@ interface MyButtonGroupProps {
 
 **Purpose**: Interactive button with multiple variants and modifiers.
 
+> **Note**: All Button props (except `children` and `onclick`) are bindable, enabling dynamic button state control.
+
 **Props**:
 - `variant` (string, default: "primary") - Options: "primary", "secondary", "flat"
 - `stretch` (boolean, default: false) - Makes button full width
@@ -157,8 +159,13 @@ interface MyButtonGroupProps {
 ```svelte
 <script>
   import * as T from 'teenoo';
+
+  // Bindable props enable dynamic control
+  let isDisabled = $state(false);
+  let buttonVariant = $state("primary");
 </script>
 
+<!-- Static props -->
 <T.Button variant="primary" onclick={() => console.log('clicked')}>
   Click me
 </T.Button>
@@ -168,6 +175,13 @@ interface MyButtonGroupProps {
 <T.Button icon>
   <svg><!-- icon --></svg>
 </T.Button>
+
+<!-- Bindable props for dynamic control -->
+<T.Button bind:disabled={isDisabled} bind:variant={buttonVariant}>
+  {buttonVariant} Button
+</T.Button>
+
+<T.Switch bind:checked={isDisabled} label="Disable button" />
 
 <T.Button openModal="my-modal">Open Modal</T.Button>
 ```

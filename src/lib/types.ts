@@ -13,27 +13,27 @@ import type { Component } from 'svelte';
 export interface ButtonProps {
   /** Button content */
   children?: Snippet;
-  /** Makes button full width */
+  /** Makes button full width - bindable */
   stretch?: boolean;
-  /** Smaller button variant (24px height) */
+  /** Smaller button variant (24px height) - bindable */
   small?: boolean;
-  /** Shows dropdown arrow icon */
+  /** Shows dropdown arrow icon - bindable */
   dropdown?: boolean;
-  /** Icon-only button (32x32px) */
+  /** Icon-only button (32x32px) - bindable */
   icon?: boolean;
-  /** Left-aligns button content */
+  /** Left-aligns button content - bindable */
   leftAlign?: boolean;
-  /** Disables the button */
+  /** Disables the button - bindable */
   disabled?: boolean;
-  /** Button style variant: "primary", "secondary", "flat" */
+  /** Button style variant: "primary", "secondary", "flat" - bindable */
   variant?: 'primary' | 'secondary' | 'flat';
-  /** Modal ID to open on click */
+  /** Modal ID to open on click - bindable */
   openModal?: string;
   /** Click event handler */
   onclick?: (event: MouseEvent) => void;
-  /** Inline CSS styles */
+  /** Inline CSS styles - bindable */
   style?: string;
-  /** For icon buttons, removes default fill */
+  /** For icon buttons, removes default fill - bindable */
   nofill?: boolean;
 }
 

@@ -12,6 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CHANGELOG.md for version tracking
 - Enhanced package.json metadata (keywords, repository, license)
 - LLM_README.md for comprehensive API documentation
+- EXAMPLES.md with copy-paste code snippets
+- Comprehensive TypeScript interfaces with JSDoc comments in `types.ts`
+- Type exports for all component props (`import type { ButtonProps }`)
+- Package export for types: `teenoo/types`
+
+### Changed
+- **BREAKING**: All Autolayout props (41 props) are now bindable
+- **BREAKING**: All Button props (10 props) are now bindable
+- Improved type definitions with proper types instead of `any`
+- Updated documentation with bindable prop examples
 
 ## [0.0.42] - 2025
 

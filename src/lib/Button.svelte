@@ -1,18 +1,18 @@
 <script lang="ts">
   import StyleProvider from './StyleProvider.svelte';
   
-  let { 
-    children, 
-    stretch = false, 
-    small = false, 
-    dropdown = false, 
-    icon = false,
-    leftAlign = false, 
+  let {
+    children,
+    stretch = $bindable(false),
+    small = $bindable(false),
+    dropdown = $bindable(false),
+    icon = $bindable(false),
+    leftAlign = $bindable(false),
     disabled = $bindable(false),
-    variant = "primary", 
-    openModal = "",
+    variant = $bindable("primary"),
+    openModal = $bindable(""),
     onclick = undefined,
-    style = "",
+    style = $bindable(""),
     nofill = $bindable(false)
   } = $props();
 
