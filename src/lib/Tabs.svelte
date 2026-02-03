@@ -1,6 +1,14 @@
 <script lang="ts">
+  import type { Component } from 'svelte';
   import StyleProvider from './StyleProvider.svelte';
-  
+
+  // Add type definitions for TypeScript
+  type Tab = {
+    id: string;
+    label: string;
+    icon?: Component<any>;
+  };
+
   // Define props at the top level
   let {
     tabs = [
@@ -10,10 +18,12 @@
     activeTab = $bindable(''),
     variant = 'chrome',
     onclick = undefined
+  }: {
+    tabs?: Tab[];
+    activeTab?: string;
+    variant?: 'chrome' | 'flat';
+    onclick?: (tabId: string, event: Event) => void;
   } = $props();
-  
-  // Add type definitions for TypeScript
-  type Tab = { id: string; label: string };
   
   // Set default active tab if not provided
   $effect(() => {
@@ -36,18 +46,21 @@
 <StyleProvider>
   <div class="tabs-container" class:flat={variant === 'flat'}>
     <div class="tabs-header" class:flat={variant === 'flat'} >
-      {#each tabs as tab}
+      {#each tabs as tab (tab.id)}
         <button
           type="button"
           class="tab-button"
-          class:active={activeTab === tab.id} 
-          class:flat={variant === 'flat'} 
+          class:active={activeTab === tab.id}
+          class:flat={variant === 'flat'}
           onclick={(e) => selectTab(tab.id, e)}
           role="tab"
           aria-selected={activeTab === tab.id}
           id={`tab-${tab.id}`}
           data-tab-id={tab.id}
         >
+          {#if tab.icon}
+            <tab.icon />
+          {/if}
           {tab.label}
         </button>
       {/each}
@@ -86,6 +99,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: var(--6px);
     border: none;
     background: transparent;
     color: var(--ds-textSecondary);
