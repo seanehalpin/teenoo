@@ -154,6 +154,8 @@ interface MyButtonGroupProps {
 - `openModal` (string, default: "") - Modal ID to open on click
 - `onclick` (function) - Click handler
 - `style` (string) - Inline styles
+- `split` (boolean, default: false) - Creates a split button with a separate chevron toggle (primary variant only)
+- `onSplitClick` (function) - Click handler for the split chevron button
 
 **Usage**:
 ```svelte
@@ -184,6 +186,20 @@ interface MyButtonGroupProps {
 <T.Switch bind:checked={isDisabled} label="Disable button" />
 
 <T.Button openModal="my-modal">Open Modal</T.Button>
+
+<!-- Split button (primary variant only) -->
+<T.Button
+  split
+  onclick={() => console.log('Main action')}
+  onSplitClick={() => console.log('Open dropdown menu')}
+>
+  Save
+</T.Button>
+
+<!-- Split button with small size -->
+<T.Button split small onclick={save} onSplitClick={openMenu}>
+  Export
+</T.Button>
 ```
 
 ---

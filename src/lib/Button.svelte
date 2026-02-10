@@ -1,6 +1,6 @@
 <script lang="ts">
   import StyleProvider from './StyleProvider.svelte';
-  
+
   let {
     children,
     stretch = $bindable(false),
@@ -13,7 +13,9 @@
     openModal = $bindable(""),
     onclick = undefined,
     style = $bindable(""),
-    nofill = $bindable(false)
+    nofill = $bindable(false),
+    split = $bindable(false),
+    onSplitClick = undefined
   } = $props();
 
   // Handle click event
@@ -23,38 +25,113 @@
       onclick(event);
     }
   }
+
+  // Handle split button click event
+  function handleSplitClick(event: Event) {
+    if (onSplitClick) {
+      onSplitClick(event);
+    }
+  }
 </script>
-<StyleProvider> 
-<button 
-  class:stretch={stretch} 
-  class:small={small} 
-  class="button {variant}" 
+<StyleProvider>
+{#if split}
+<div class="split-button-group" class:stretch={stretch} class:small={small}>
+  <button
+    class:small={small}
+    class="button split-main {variant}"
+    class:modal-trigger={!!openModal}
+    class:left-align={leftAlign}
+    onclick={handleClick}
+    data-modal-target={openModal || undefined}
+    style={style}
+    disabled={disabled}
+  >
+    {#if icon}
+    <span class="icon-holder" class:nofill={nofill}>{@render children?.()} </span>
+    {:else}
+    {@render children?.()}
+    {/if}
+  </button>
+  <button
+    class="button split-toggle {variant}"
+    class:small={small}
+    onclick={handleSplitClick}
+    disabled={disabled}
+    aria-label="Toggle dropdown"
+  >
+    <span class="dropdown-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" fill="currentColor" viewBox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
+    </span>
+  </button>
+</div>
+{:else}
+<button
+  class:stretch={stretch}
+  class:small={small}
+  class="button {variant}"
   class:dropdown={dropdown}
   class:icon={icon}
-  class:modal-trigger={!!openModal} 
+  class:modal-trigger={!!openModal}
   class:left-align={leftAlign}
   onclick={handleClick}
   data-modal-target={openModal || undefined}
-  style={style} 
+  style={style}
   disabled={disabled}
 >
 
   {#if icon}
   <span class="icon-holder" class:nofill={nofill}>{@render children?.()} </span>
   {:else}
-  {@render children?.()} 
+  {@render children?.()}
   {/if}
-  
+
   {#if dropdown}
   <span class="dropdown-icon">
     <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" fill="currentColor" viewBox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
   </span>
   {/if}
 </button>
+{/if}
 </StyleProvider>
 
 <style lang="scss">
-  
+
+  .split-button-group {
+    display: inline-flex;
+
+    &.stretch {
+      width: 100%;
+
+      .split-main {
+        flex: 1;
+      }
+    }
+
+    &.small {
+      .split-main {
+        border-radius: var(--4px) 0 0 var(--4px);
+      }
+
+      .split-toggle {
+        border-radius: 0 var(--4px) var(--4px) 0;
+        width: var(--24px);
+        height: var(--24px);
+      }
+    }
+
+    .split-main {
+      border-radius: var(--8px) 0 0 var(--8px);
+    }
+
+    .split-toggle {
+      border-radius: 0 var(--8px) var(--8px) 0;
+      width: var(--32px);
+      height: var(--32px);
+      padding: 0;
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  }
+
   button {
     font-family: var( --font-base);
     font-size: var(--12px);
