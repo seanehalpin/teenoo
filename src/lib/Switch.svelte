@@ -112,7 +112,7 @@
     transition: background-color 0.3s ease;
     
     .switch.checked & {
-      background-color: var(--ds-switchTrackActive);
+      background-color: var(--switch-check-color, var(--ds-switchTrackActive));
     }
   }
   
