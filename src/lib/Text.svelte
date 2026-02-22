@@ -22,6 +22,7 @@
     color = "",
     className = "",
     pretty = false,
+    noselect = false,
 
     // Optional HTML element to render
     as = "span",
@@ -56,7 +57,9 @@
     } else {
       baseClass = `text-${sizeClass()}-${typeClass()}`;
     }
-    return pretty ? `${baseClass} pretty` : baseClass;
+    if (pretty) baseClass += " pretty";
+    if (noselect) baseClass += " noselect";
+    return baseClass;
   });
   
   // Custom text color if provided
@@ -203,5 +206,10 @@
   /* Pretty text wrapping */
   .pretty {
     text-wrap: pretty;
+  }
+
+  /* No select */
+  .noselect {
+    user-select: none;
   }
 </style>
