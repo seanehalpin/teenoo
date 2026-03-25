@@ -181,7 +181,7 @@
     }
 
     &.small {
-      border-radius: var(--4px);
+      border-radius: 6px;
       height: var(--24px);
       padding: 0 var(--8px);
 

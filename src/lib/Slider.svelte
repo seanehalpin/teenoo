@@ -28,6 +28,20 @@
   let randomId = Math.random().toString(36).substring(2, 15);
   let id = `range-${randomId}`;
 
+  // Get decimal places from step to fix floating point precision
+  function getDecimalPlaces(num: number): number {
+    const str = num.toString();
+    const decimalIndex = str.indexOf('.');
+    return decimalIndex === -1 ? 0 : str.length - decimalIndex - 1;
+  }
+
+  const decimalPlaces = getDecimalPlaces(step);
+
+  function roundToPrecision(val: number): number {
+    const factor = Math.pow(10, decimalPlaces);
+    return Math.round(val * factor) / factor;
+  }
+
   // Compute the position percentage for each handle
   function getHandlePosition(val: number): number {
     return ((val - min) / (max - min)) * 100;
@@ -50,7 +64,7 @@
     const clickPosition = (event.clientX - rect.left) / rect.width;
     const newValue = min + clickPosition * (max - min);
     const roundedValue = Math.round(newValue / step) * step;
-    const clampedValue = Math.max(min, Math.min(max, roundedValue));
+    const clampedValue = roundToPrecision(Math.max(min, Math.min(max, roundedValue)));
     
     if (dual) {
       // Find nearest handle to the click position
@@ -101,7 +115,7 @@
     const movePosition = (event.clientX - rect.left) / rect.width;
     const newValue = min + movePosition * (max - min);
     const roundedValue = Math.round(newValue / step) * step;
-    const clampedValue = Math.max(min, Math.min(max, roundedValue));
+    const clampedValue = roundToPrecision(Math.max(min, Math.min(max, roundedValue)));
     
     if (dual) {
       if (activeHandle === 'start') {
@@ -160,10 +174,10 @@
       }
       
       if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') {
-        newValue = Math.max(min, newValue - step);
+        newValue = roundToPrecision(Math.max(min, newValue - step));
         event.preventDefault();
       } else if (event.key === 'ArrowRight' || event.key === 'ArrowUp') {
-        newValue = Math.min(max, newValue + step);
+        newValue = roundToPrecision(Math.min(max, newValue + step));
         event.preventDefault();
       } else if (event.key === 'Home') {
         newValue = min;
