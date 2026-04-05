@@ -42,6 +42,7 @@
     height = $bindable("auto"),
     flex = $bindable(false),
     class: customClass = $bindable(''),
+    ref = '',
   } = $props();
   
   // Map border color names to CSS variables
@@ -66,6 +67,7 @@
 <div
     {onclick}
     class="autolayout {customClass}"
+    data-id={ref || undefined}
     style:padding-left={paddingLeft || undefined}
     style:padding-right={paddingRight || undefined}
     style:padding-top={paddingTop || undefined}
