@@ -1,6 +1,6 @@
 {
   "name": "teenoo",
-  "version": "0.0.51",
+  "version": "0.0.52",
   "description": "Svelte 5 component library for rapid prototyping with visual layout tools",
   "type": "module",
   "keywords": [
