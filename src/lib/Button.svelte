@@ -212,6 +212,10 @@
         background: var(--button-bg-hover, var(--ds-primary));
         color: var(--button-color, var(--ds-textWhite));
       }
+
+      kbd {
+        opacity: 0.5;
+      }
     }
 
     &.secondary {
@@ -223,6 +227,12 @@
         background: var(--button-bg-hover, var(--ds-controlSecondaryHover));
         color: var(--button-color, var(--ds-textPrimary));
       }
+
+      kbd {
+        color: var(--ds-textSecondary);
+        background-color: var(--ds-controlSecondaryHover);
+        border-color: var(--ds-borderStrong);
+      }
     }
 
     &.flat {
@@ -233,6 +243,12 @@
         filter: brightness(1);
         background: var(--button-bg-hover, var(--ds-slate04));
         color: var(--button-color, var(--ds-textPrimary));
+      }
+
+      kbd {
+        color: var(--ds-textSecondary);
+        background-color: var(--ds-controlSecondaryHover);
+        border-color: var(--ds-borderStrong);
       }
     }
 
@@ -246,16 +262,16 @@
     }
 
     kbd {
-      background: var(--ds-popoverPrimary);
-      border: 1px solid var(--ds-borderPrimary);
+      opacity: 0.5;
+      background: transparent;
+      border: 1px solid var(--ds-slateLight);
       border-radius: var(--4px);
       width: var(--16px);
       height: var(--16px);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--ds-textSecondary);
-      font-size: var(--10px);
+      font-size: var(--8px);
       font-family: var(--font-base);
     }
 
