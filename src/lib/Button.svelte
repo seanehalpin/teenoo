@@ -15,7 +15,8 @@
     style = $bindable(""),
     nofill = $bindable(false),
     split = $bindable(false),
-    onSplitClick = undefined
+    onSplitClick = undefined,
+    kbd = $bindable<string[]>([])
   } = $props();
 
   // Handle click event
@@ -88,6 +89,13 @@
   {#if dropdown}
   <span class="dropdown-icon">
     <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" fill="currentColor" viewBox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
+  </span>
+  {/if}
+  {#if kbd.length > 0}
+  <span class="kbd-group">
+    {#each kbd as key, i (i)}
+      <kbd>{key}</kbd>
+    {/each}
   </span>
   {/if}
 </button>
@@ -230,6 +238,25 @@
 
     .dropdown-icon {
       display: flex;
+    }
+
+    .kbd-group {
+      display: flex;
+      gap: var(--4px);
+    }
+
+    kbd {
+      background: var(--ds-popoverPrimary);
+      border: 1px solid var(--ds-borderPrimary);
+      border-radius: var(--4px);
+      width: var(--16px);
+      height: var(--16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ds-textSecondary);
+      font-size: var(--10px);
+      font-family: var(--font-base);
     }
 
   }
