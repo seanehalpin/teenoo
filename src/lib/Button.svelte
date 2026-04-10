@@ -10,6 +10,9 @@
     leftAlign = $bindable(false),
     disabled = $bindable(false),
     variant = $bindable("primary"),
+    primary = false,
+    secondary = false,
+    flat = false,
     openModal = $bindable(""),
     onclick = undefined,
     style = $bindable(""),
@@ -18,6 +21,10 @@
     onSplitClick = undefined,
     kbd = $bindable<string[]>([])
   } = $props();
+
+  let resolvedVariant = $derived(
+    flat ? "flat" : secondary ? "secondary" : primary ? "primary" : variant
+  );
 
   // Handle click event
   function handleClick(event: Event) {
@@ -39,7 +46,7 @@
 <div class="split-button-group" class:stretch={stretch} class:small={small}>
   <button
     class:small={small}
-    class="button split-main {variant}"
+    class="button split-main {resolvedVariant}"
     class:modal-trigger={!!openModal}
     class:left-align={leftAlign}
     onclick={handleClick}
@@ -54,7 +61,7 @@
     {/if}
   </button>
   <button
-    class="button split-toggle {variant}"
+    class="button split-toggle {resolvedVariant}"
     class:small={small}
     onclick={handleSplitClick}
     disabled={disabled}
@@ -69,7 +76,7 @@
 <button 
   class:stretch={stretch} 
   class:small={small} 
-  class="button {variant}" 
+  class="button {resolvedVariant}" 
   class:dropdown={dropdown}
   class:icon={icon}
   class:modal-trigger={!!openModal} 
