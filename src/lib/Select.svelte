@@ -165,7 +165,7 @@
     border: 1px solid var(--ds-borderPrimary);
     border-radius: var(--8px);
     background: var(--ds-inputPrimary);
-    transition: all 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
     position: relative;
     padding: 0 var(--12px);
