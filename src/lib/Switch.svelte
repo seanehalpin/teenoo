@@ -73,7 +73,7 @@
   .switch-label {
     font-family: var(--font-base);
     font-size: var(--14px);
-    color: var(--ds-textPrimary);
+    color: var(--ds-teeno-textPrimary);
     cursor: pointer;
     
     .disabled & {
@@ -91,7 +91,7 @@
     cursor: pointer;
     
     &:focus-visible {
-      outline: 2px solid var(--ds-primary);
+      outline: 2px solid var(--ds-teeno-primary);
       outline-offset: 2px;
       border-radius: var(--32px);
     }
@@ -108,11 +108,11 @@
     right: 0;
     bottom: 0;
     border-radius: calc(var(--switch-height) / 2);
-    background-color: var(--ds-switchTrack);
+    background-color: var(--ds-teeno-switchTrack);
     transition: background-color 0.3s ease;
     
     .switch.checked & {
-      background-color: var(--switch-check-color, var(--ds-switchTrackActive));
+      background-color: var(--switch-check-color, var(--ds-teeno-switchTrackActive));
     }
   }
   
@@ -123,8 +123,8 @@
     width: calc(var(--switch-height) - 6px);
     height: calc(var(--switch-height) - 6px);
     border-radius: 50%;
-    background-color: var(--ds-switchHandle);
-    box-shadow: 0 1px 2px var(--ds-switchHandleShadow);
+    background-color: var(--ds-teeno-switchHandle);
+    box-shadow: 0 1px 2px var(--ds-teeno-switchHandleShadow);
     transition: transform 0.3s ease;
     
     .switch.checked & {

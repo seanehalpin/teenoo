@@ -97,7 +97,7 @@ interface MyFormProps {
 teenoo uses CSS variables for consistent styling:
 
 ```css
---ds-primary, --ds-textPrimary, --ds-surfacePrimary
+--ds-teeno-primary, --ds-teeno-textPrimary, --ds-teeno-surfacePrimary
 --8px, --12px, --16px, --20px, --24px, --32px
 --font-base, --font-mono
 ```

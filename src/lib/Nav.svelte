@@ -24,7 +24,7 @@
 <StyleProvider>
 <div class="nav">
   <div class="logo">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--ds-textPrimary)" viewBox="0 0 256 256"><path fill-rule="evenodd" clip-rule="evenodd" d="M93.5192 0C62.4136 0 34.9105 19.6599 25.6014 48.5495L0 128L25.6014 207.451C34.9105 236.34 62.4136 256 93.5192 256H162.481C193.586 256 221.089 236.34 230.399 207.451L256 128L230.399 48.5495C221.089 19.6599 193.586 0 162.481 0H93.5192ZM162.482 19.9707C184.622 19.9707 204.197 33.9638 210.823 54.5262L217.1 74.005C204.473 63.8523 188.483 58.1378 171.771 58.1366L84.0425 58.1343C67.4428 58.1356 51.556 63.7735 38.9692 73.7985L45.1793 54.5262C51.8051 33.9638 71.3806 19.9707 93.5203 19.9707H162.482ZM43.7049 97.5889L27.7638 118.015L228.048 118.015L212.109 97.5911C202.529 85.3169 187.605 78.1085 171.769 78.1073H83.5648C67.9076 78.2523 53.1873 85.4386 43.7049 97.5889ZM228.015 137.986L212.107 158.391C202.527 170.679 187.592 177.896 171.745 177.895L84.0661 177.892C68.2187 177.894 53.2836 170.677 43.7038 158.389L27.7975 137.986L228.015 137.986ZM45.1781 201.474C51.8039 222.036 71.3794 236.029 93.5191 236.029H162.481C184.62 236.029 204.196 222.036 210.822 201.474L217.103 181.981C204.47 192.146 188.468 197.867 171.743 197.865L84.0677 197.863C67.4542 197.864 51.5544 192.22 38.9615 182.182L45.1781 201.474Z"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--ds-teeno-textPrimary)" viewBox="0 0 256 256"><path fill-rule="evenodd" clip-rule="evenodd" d="M93.5192 0C62.4136 0 34.9105 19.6599 25.6014 48.5495L0 128L25.6014 207.451C34.9105 236.34 62.4136 256 93.5192 256H162.481C193.586 256 221.089 236.34 230.399 207.451L256 128L230.399 48.5495C221.089 19.6599 193.586 0 162.481 0H93.5192ZM162.482 19.9707C184.622 19.9707 204.197 33.9638 210.823 54.5262L217.1 74.005C204.473 63.8523 188.483 58.1378 171.771 58.1366L84.0425 58.1343C67.4428 58.1356 51.556 63.7735 38.9692 73.7985L45.1793 54.5262C51.8051 33.9638 71.3806 19.9707 93.5203 19.9707H162.482ZM43.7049 97.5889L27.7638 118.015L228.048 118.015L212.109 97.5911C202.529 85.3169 187.605 78.1085 171.769 78.1073H83.5648C67.9076 78.2523 53.1873 85.4386 43.7049 97.5889ZM228.015 137.986L212.107 158.391C202.527 170.679 187.592 177.896 171.745 177.895L84.0661 177.892C68.2187 177.894 53.2836 170.677 43.7038 158.389L27.7975 137.986L228.015 137.986ZM45.1781 201.474C51.8039 222.036 71.3794 236.029 93.5191 236.029H162.481C184.62 236.029 204.196 222.036 210.822 201.474L217.103 181.981C204.47 192.146 188.468 197.867 171.743 197.865L84.0677 197.863C67.4542 197.864 51.5544 192.22 38.9615 182.182L45.1781 201.474Z"></path></svg>
   </div>
 
   <div class="links">
@@ -69,14 +69,14 @@
     width: 100%;
     height: var(--64px);
     justify-content: space-between;
-    background-color: var(--ds-surfacePrimary);
-    border-bottom: 1px solid var(--ds-borderSecondary);
+    background-color: var(--ds-teeno-surfacePrimary);
+    border-bottom: 1px solid var(--ds-teeno-borderSecondary);
     white-space: nowrap;
   }
 
   .title {
     font-size: var(--12px);
-    color: var(--ds-textPrimary);
+    color: var(--ds-teeno-textPrimary);
     font-weight: 500;
     line-height: var(--16px);
     display: flex;
@@ -101,7 +101,7 @@
 
   .publish {
     color: #fff;
-    background: var(--ds-primary);
+    background: var(--ds-teeno-primary);
     outline: 0;
     border: 0;
     display: inline-flex;
@@ -131,19 +131,19 @@
       background: transparent;
       border: 1px solid transparent;
       font-weight: 500;
-      color: var(--ds-textSecondary);
+      color: var(--ds-teeno-textSecondary);
       height: 28px;
       cursor: pointer;
       position: relative;
 
       &.active {
-        color: var(--ds-textPrimary);
+        color: var(--ds-teeno-textPrimary);
 
         &::before {
           width: 100%;
           height: 1px;
           content: "";
-          background: var(--ds-primary);
+          background: var(--ds-teeno-primary);
           position: absolute;
           bottom: -19px;
           left: 0;
@@ -151,7 +151,7 @@
       }
 
       &:hover {
-        background: var(--ds-InputBackground);
+        background: var(--ds-teeno-InputBackground);
       }
     }
   }

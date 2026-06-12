@@ -76,7 +76,7 @@
   .input-label {
     font-family: var(--font-base);
     font-size: var(--12px);
-    color: var(--ds-textSecondary);
+    color: var(--ds-teeno-textSecondary);
     font-weight: 500;
     
     &.small {
@@ -89,33 +89,33 @@
     box-sizing: border-box;
     display: flex;
     width: 100%;
-    border: 1px solid var(--ds-borderPrimary);
+    border: 1px solid var(--ds-teeno-borderPrimary);
     border-radius: var(--8px);
-    background: var(--ds-inputPrimary);
+    background: var(--ds-teeno-inputPrimary);
     transition: box-shadow 0.2s ease, border 0.2s ease;
     
     &:focus-within {
-      border-color: var(--ds-inputActiveBorder);
-      box-shadow: 0 0 0 3px var(--ds-inputActiveOutline);
+      border-color: var(--ds-teeno-inputActiveBorder);
+      box-shadow: 0 0 0 3px var(--ds-teeno-inputActiveOutline);
     }
     
     &:hover:not(:focus-within):not(.disabled) {
-      border-color: var(--ds-inputHoverBorder);
+      border-color: var(--ds-teeno-inputHoverBorder);
     }
     
     &.hasError {
-      border-color: var(--ds-inputErrorBorder);
+      border-color: var(--ds-teeno-inputErrorBorder);
       
       &:focus-within {
-        border-color: var(--ds-inputActiveErrorBorder);
-        box-shadow: 0 0 0 3px var(--ds-inputActiveErrorOutline);
+        border-color: var(--ds-teeno-inputActiveErrorBorder);
+        box-shadow: 0 0 0 3px var(--ds-teeno-inputActiveErrorOutline);
       }
     }
     
     &.disabled {
       opacity: 0.5;
       cursor: not-allowed;
-      background: var(--ds-inputSecondary);
+      background: var(--ds-teeno-inputSecondary);
     }
     
     &.small {
@@ -133,7 +133,7 @@
     transform: translateY(-50%);
     width: var(--16px);
     height: var(--16px);
-    color: var(--ds-textTertiary);
+    color: var(--ds-teeno-textTertiary);
     z-index: 100;
     pointer-events: none;
   }
@@ -149,7 +149,7 @@
     border: none;
     outline: none;
     background: transparent;
-    color: var(--ds-textPrimary);
+    color: var(--ds-teeno-textPrimary);
     height: calc(var(--32px) - 2px);
 
     &.search {
@@ -157,7 +157,7 @@
     }
     
     &::placeholder {
-      color: var(--ds-textTertiary);
+      color: var(--ds-teeno-textTertiary);
     }
     
     &:disabled {
@@ -168,7 +168,7 @@
   .input-error {
     font-family: var(--font-base);
     font-size: var(--11px);
-    color: var(--ds-inputErrorText);
+    color: var(--ds-teeno-inputErrorText);
     display: flex;
     align-items: center;
     gap: var(--4px);

@@ -79,8 +79,8 @@
   .tabs-header {
     display: flex;
     position: relative;
-    background: var(--ds-surfaceSecondary);
-    border: 1px solid var(--ds-borderSecondary);
+    background: var(--ds-teeno-surfaceSecondary);
+    border: 1px solid var(--ds-teeno-borderSecondary);
     border-radius: var(--8px);
     padding: calc(var(--4px) - 1px);
 
@@ -102,7 +102,7 @@
     gap: var(--6px);
     border: none;
     background: transparent;
-    color: var(--ds-textSecondary);
+    color: var(--ds-teeno-textSecondary);
     cursor: pointer;
     position: relative;
     height: var(--24px);
@@ -111,8 +111,8 @@
     width: 100%;
 
     &.active {
-      color: var(--ds-textPrimary);
-      background: var(--ds-controlSecondary);
+      color: var(--ds-teeno-textPrimary);
+      background: var(--ds-teeno-controlSecondary);
       box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
     }
 
@@ -126,12 +126,12 @@
       &.active {
         background: transparent;
         box-shadow: none;
-        // color: var(--ds-textPrimary);
+        // color: var(--ds-teeno-textPrimary);
       }
     }
     
     &:hover {
-      // color: var(--ds-textPrimary);
+      // color: var(--ds-teeno-textPrimary);
     }
   }
 </style>

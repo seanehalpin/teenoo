@@ -13,7 +13,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Svelte components use runes syntax (e.g., `$props()`)
 - Component naming: PascalCase (e.g., `Button.svelte`)
 - Export components individually from `src/lib/index.ts`
-- Use CSS variables for design system values (e.g., `--ds-primary`)
+- Use CSS variables for design system values (e.g., `--ds-teeno-primary`)
 - SCSS syntax allowed within Svelte style blocks
 - CSS class names: camelCase or kebab-case
 - Boolean props default to false when not specified

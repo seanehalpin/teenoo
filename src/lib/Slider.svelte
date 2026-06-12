@@ -302,7 +302,7 @@
   .range-label {
     font-family: var(--font-base);
     font-size: var(--12px);
-    color: var(--ds-textSecondary);
+    color: var(--ds-teeno-textSecondary);
     font-weight: 500;
   }
   
@@ -315,7 +315,7 @@
   .range-track {
     position: relative;
     height: var(--8px);
-    background-color: var(--ds-slate04);
+    background-color: var(--ds-teeno-slate04);
     border-radius: calc(infinity * 1px);
     flex-grow: 1;
     cursor: pointer;
@@ -339,7 +339,7 @@
   .range-fill {
     position: absolute;
     height: 100%;
-    background-color: var(--ds-primary);
+    background-color: var(--ds-teeno-primary);
     border-radius: calc(infinity * 1px) 0 0 calc(infinity * 1px);
     top: 0;
     left: 0;
@@ -351,8 +351,8 @@
     width: var(--18px);
     height: var(--18px);
     border-radius: 50%;
-    background-color: var(--ds-textWhite);
-    border: 3px solid var(--ds-primary);
+    background-color: var(--ds-teeno-textWhite);
+    border: 3px solid var(--ds-teeno-primary);
     transform: translate(-50%, -50%);
     top: 50%;
     cursor: grab;
@@ -380,7 +380,7 @@
     }
     
     &:focus {
-      box-shadow: 0 0 0 3px var(--ds-inputActiveOutline);
+      box-shadow: 0 0 0 3px var(--ds-teeno-inputActiveOutline);
     }
     
     &:disabled {
@@ -396,9 +396,9 @@
     min-width: 60px;
     font-family: var(--font-base);
     font-size: var(--12px);
-    color: var(--ds-textPrimary);
-    background: var(--ds-inputPrimary);
-    box-shadow: 0 0 0 1px var(--ds-borderPrimary);
+    color: var(--ds-teeno-textPrimary);
+    background: var(--ds-teeno-inputPrimary);
+    box-shadow: 0 0 0 1px var(--ds-teeno-borderPrimary);
     min-width: var(--48px);
     border-radius: var(--8px);
     height: var(--32px);
@@ -415,7 +415,7 @@
     font-weight: 500;
 
     span {
-      color: var(--ds-textTertiary);
+      color: var(--ds-teeno-textTertiary);
     }
   }
 </style>

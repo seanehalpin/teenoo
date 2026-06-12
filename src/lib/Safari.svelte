@@ -31,13 +31,13 @@
       
       // Otherwise, check if it's a named color
       switch (background.toLowerCase()) {
-        case 'primary': return 'var(--ds-primary)';
-        case 'red': return 'var(--ds-red)';
-        case 'blue': return 'var(--ds-blue)';
-        case 'magenta': return 'var(--ds-magenta)';
-        case 'green': return 'var(--ds-green)';
-        case 'orange': return 'var(--ds-orange)';
-        case 'gold': return 'var(--ds-gold)';
+        case 'primary': return 'var(--ds-teeno-primary)';
+        case 'red': return 'var(--ds-teeno-red)';
+        case 'blue': return 'var(--ds-teeno-blue)';
+        case 'magenta': return 'var(--ds-teeno-magenta)';
+        case 'green': return 'var(--ds-teeno-green)';
+        case 'orange': return 'var(--ds-teeno-orange)';
+        case 'gold': return 'var(--ds-teeno-gold)';
         case 'transparent': return 'transparent';
         default: return background; // Try to use as-is if not recognized
       }
@@ -46,20 +46,20 @@
     // If no background but color is provided, use the color
     if (color) {
       switch (color.toLowerCase()) {
-        case 'primary': return 'var(--ds-primary)';
-        case 'red': return 'var(--ds-red)';
-        case 'blue': return 'var(--ds-blue)';
-        case 'magenta': return 'var(--ds-magenta)';
-        case 'green': return 'var(--ds-green)';
-        case 'orange': return 'var(--ds-orange)';
-        case 'gold': return 'var(--ds-gold)';
+        case 'primary': return 'var(--ds-teeno-primary)';
+        case 'red': return 'var(--ds-teeno-red)';
+        case 'blue': return 'var(--ds-teeno-blue)';
+        case 'magenta': return 'var(--ds-teeno-magenta)';
+        case 'green': return 'var(--ds-teeno-green)';
+        case 'orange': return 'var(--ds-teeno-orange)';
+        case 'gold': return 'var(--ds-teeno-gold)';
         case 'transparent': return 'transparent';
-        default: return 'var(--ds-primary)'; // Default to primary if not recognized
+        default: return 'var(--ds-teeno-primary)'; // Default to primary if not recognized
       }
     }
     
     // Default color if nothing is specified
-    return 'var(--ds-primary)';
+    return 'var(--ds-teeno-primary)';
   }
 
 
@@ -104,13 +104,13 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    // background: var(--safari-bg, var(--ds-primary));
+    // background: var(--safari-bg, var(--ds-teeno-primary));
     background-size: cover;
 
   }
 
   .holder {
-    background: var(--ds-surfacePrimary);
+    background: var(--ds-teeno-surfacePrimary);
     box-shadow: 0 40px 40px 0 rgba(0,0,0,0.2);
     // width: var(--safari-width, 1400px);
     // height: var(--safari-height, 800px);
@@ -134,14 +134,14 @@
       width: calc(100%);
       height: calc(100%);
       border-radius: var(--12px);
-      border: 1px solid var(--ds-borderPrimary);
+      border: 1px solid var(--ds-teeno-borderPrimary);
     }
   }
 
   .safari {
-    background: var(--ds-surfaceTertiary);
+    background: var(--ds-teeno-surfaceTertiary);
     height: 40px;
-    box-shadow: 0 1px 0 0 var(--ds-borderPrimary);
+    box-shadow: 0 1px 0 0 var(--ds-teeno-borderPrimary);
     position: sticky;
     top: 0;
     left: 0;
@@ -155,15 +155,15 @@
       position: absolute;
       left: 200px;
       top: 7px;
-      background: var(--ds-surfaceTertiary);
-      border: 1px solid var(--ds-borderPrimary);
+      background: var(--ds-teeno-surfaceTertiary);
+      border: 1px solid var(--ds-teeno-borderPrimary);
       content: "";
     }
 
     .safari-link {
       text-align: center;
       font-size: var(--12px);
-      color: var(--ds-textTertiary);
+      color: var(--ds-teeno-textTertiary);
       position: relative;
       z-index: 1000;
       height: 40px;

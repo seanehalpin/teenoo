@@ -562,13 +562,13 @@
   ],
   "designTokens": {
     "colors": [
-      { "name": "primary", "value": "var(--ds-primary)", "description": "Primary brand color" },
-      { "name": "red", "value": "var(--ds-red)", "description": "Red accent color" },
-      { "name": "blue", "value": "var(--ds-blue)", "description": "Blue accent color" },
-      { "name": "magenta", "value": "var(--ds-magenta)", "description": "Magenta accent color" },
-      { "name": "green", "value": "var(--ds-green)", "description": "Green accent color" },
-      { "name": "orange", "value": "var(--ds-orange)", "description": "Orange accent color" },
-      { "name": "gold", "value": "var(--ds-gold)", "description": "Gold accent color" }
+      { "name": "primary", "value": "var(--ds-teeno-primary)", "description": "Primary brand color" },
+      { "name": "red", "value": "var(--ds-teeno-red)", "description": "Red accent color" },
+      { "name": "blue", "value": "var(--ds-teeno-blue)", "description": "Blue accent color" },
+      { "name": "magenta", "value": "var(--ds-teeno-magenta)", "description": "Magenta accent color" },
+      { "name": "green", "value": "var(--ds-teeno-green)", "description": "Green accent color" },
+      { "name": "orange", "value": "var(--ds-teeno-orange)", "description": "Orange accent color" },
+      { "name": "gold", "value": "var(--ds-teeno-gold)", "description": "Gold accent color" }
     ],
     "spacing": [
       { "name": "4px", "value": "var(--4px)", "description": "Tiny spacing (0.25rem)" },

@@ -75,13 +75,13 @@
     // Color name mapping
     if (color) {
       switch (color.toLowerCase()) {
-        case 'primary': return 'var(--ds-primary)';
-        case 'red': return 'var(--ds-red)';
-        case 'blue': return 'var(--ds-blue)';
-        case 'magenta': return 'var(--ds-magenta)';
-        case 'green': return 'var(--ds-green)';
-        case 'orange': return 'var(--ds-orange)';
-        case 'gold': return 'var(--ds-gold)';
+        case 'primary': return 'var(--ds-teeno-primary)';
+        case 'red': return 'var(--ds-teeno-red)';
+        case 'blue': return 'var(--ds-teeno-blue)';
+        case 'magenta': return 'var(--ds-teeno-magenta)';
+        case 'green': return 'var(--ds-teeno-green)';
+        case 'orange': return 'var(--ds-teeno-orange)';
+        case 'gold': return 'var(--ds-teeno-gold)';
         default:
           // If color is a custom value like '#ff0000' or any other color, use it directly
           if (color.startsWith('#') || color.startsWith('rgb') || color.startsWith('hsl') || color.startsWith('var(')) {
@@ -92,13 +92,13 @@
     
     // Colors from design system for random selection
     const colors = [
-      'var(--ds-primary)', 
-      'var(--ds-blue)', 
-      'var(--ds-magenta)',
-      'var(--ds-green)',
-      'var(--ds-orange)',
-      'var(--ds-red)',
-      'var(--ds-gold)'
+      'var(--ds-teeno-primary)', 
+      'var(--ds-teeno-blue)', 
+      'var(--ds-teeno-magenta)',
+      'var(--ds-teeno-green)',
+      'var(--ds-teeno-orange)',
+      'var(--ds-teeno-red)',
+      'var(--ds-teeno-gold)'
     ];
     
     // Hash the name or initials to get a consistent color

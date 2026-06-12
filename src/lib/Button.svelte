@@ -153,8 +153,8 @@
     padding: 0 var(--12px);
     height: var(--32px);
     border-radius: var(--8px);
-    background: var(--button-bg, var(--ds-primary));
-    color: var(--button-color, var(--ds-textWhite));
+    background: var(--button-bg, var(--ds-teeno-primary));
+    color: var(--button-color, var(--ds-teeno-textWhite));
     border: none;
     cursor: pointer;
     font-weight: 500;
@@ -216,8 +216,8 @@
       font-weight: 600;
 
       &:hover {
-        background: var(--button-bg-hover, var(--ds-primary));
-        color: var(--button-color, var(--ds-textWhite));
+        background: var(--button-bg-hover, var(--ds-teeno-primary));
+        color: var(--button-color, var(--ds-teeno-textWhite));
       }
 
       kbd {
@@ -226,36 +226,36 @@
     }
 
     &.secondary {
-      background: var(--button-bg, var(--ds-controlSecondary));
-      color: var(--button-color, var(--ds-textPrimary));
-      border: 1px solid var(--ds-borderPrimary);
+      background: var(--button-bg, var(--ds-teeno-controlSecondary));
+      color: var(--button-color, var(--ds-teeno-textPrimary));
+      border: 1px solid var(--ds-teeno-borderPrimary);
 
       &:hover {
-        background: var(--button-bg-hover, var(--ds-controlSecondaryHover));
-        color: var(--button-color, var(--ds-textPrimary));
+        background: var(--button-bg-hover, var(--ds-teeno-controlSecondaryHover));
+        color: var(--button-color, var(--ds-teeno-textPrimary));
       }
 
       kbd {
-        color: var(--ds-textSecondary);
-        background-color: var(--ds-controlSecondaryHover);
-        border-color: var(--ds-borderStrong);
+        color: var(--ds-teeno-textSecondary);
+        background-color: var(--ds-teeno-controlSecondaryHover);
+        border-color: var(--ds-teeno-borderStrong);
       }
     }
 
     &.flat {
       background: transparent;
-      color: var(--button-color, var(--ds-textPrimary));
+      color: var(--button-color, var(--ds-teeno-textPrimary));
 
       &:hover {
         filter: brightness(1);
-        background: var(--button-bg-hover, var(--ds-slate04));
-        color: var(--button-color, var(--ds-textPrimary));
+        background: var(--button-bg-hover, var(--ds-teeno-slate04));
+        color: var(--button-color, var(--ds-teeno-textPrimary));
       }
 
       kbd {
-        color: var(--ds-textSecondary);
-        background-color: var(--ds-controlSecondaryHover);
-        border-color: var(--ds-borderStrong);
+        color: var(--ds-teeno-textSecondary);
+        background-color: var(--ds-teeno-controlSecondaryHover);
+        border-color: var(--ds-teeno-borderStrong);
       }
     }
 
@@ -271,7 +271,7 @@
     kbd {
       opacity: 0.5;
       background: transparent;
-      border: 1px solid var(--ds-slateLight);
+      border: 1px solid var(--ds-teeno-slateLight);
       border-radius: var(--4px);
       width: var(--16px);
       height: var(--16px);

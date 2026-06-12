@@ -85,7 +85,7 @@
     border-collapse: separate;
     border-spacing: 0;
     font-family: var(--font-base);
-    border: 1px solid var(--ds-borderPrimary);
+    border: 1px solid var(--ds-teeno-borderPrimary);
     border-radius: var(--12px);
     overflow: hidden;
     
@@ -101,29 +101,29 @@
 
   
     th {
-      color: var(--ds-textSecondary);
-      background: var(--ds-surfacePrimary);
-      border-bottom: 1px solid var(--ds-borderPrimary);
+      color: var(--ds-teeno-textSecondary);
+      background: var(--ds-teeno-surfacePrimary);
+      border-bottom: 1px solid var(--ds-teeno-borderPrimary);
       font-weight: 500;
       height: 50px;
       text-transform: capitalize;
     }
 
     td {
-      color: var(--ds-textPrimary);
+      color: var(--ds-teeno-textPrimary);
       padding: var(--32px) 0;
-      background: var(--ds-surfacePrimary);
+      background: var(--ds-teeno-surfacePrimary);
     }
     
     tbody tr {
       &:hover {
         td {
-          background: var(--ds-surfaceSecondary);
+          background: var(--ds-teeno-surfaceSecondary);
         }
       }
       
       td {
-        border-bottom: 1px solid var(--ds-borderPrimary);
+        border-bottom: 1px solid var(--ds-teeno-borderPrimary);
         height: var(--40px);
       }
 

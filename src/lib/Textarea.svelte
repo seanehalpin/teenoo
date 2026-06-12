@@ -75,7 +75,7 @@
   .textarea-label {
     font-family: var(--font-base);
     font-size: var(--12px);
-    color: var(--ds-textSecondary);
+    color: var(--ds-teeno-textSecondary);
     font-weight: 500;
   }
 
@@ -83,33 +83,33 @@
     box-sizing: border-box;
     display: flex;
     width: 100%;
-    border: 1px solid var(--ds-borderPrimary);
+    border: 1px solid var(--ds-teeno-borderPrimary);
     border-radius: var(--8px);
-    background: var(--ds-inputPrimary);
+    background: var(--ds-teeno-inputPrimary);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     
     &:focus-within {
-      border-color: var(--ds-inputActiveBorder);
-      box-shadow: 0 0 0 3px var(--ds-inputActiveOutline);
+      border-color: var(--ds-teeno-inputActiveBorder);
+      box-shadow: 0 0 0 3px var(--ds-teeno-inputActiveOutline);
     }
     
     &:hover:not(:focus-within):not(.disabled) {
-      border-color: var(--ds-inputHoverBorder);
+      border-color: var(--ds-teeno-inputHoverBorder);
     }
     
     &.hasError {
-      border-color: var(--ds-inputErrorBorder);
+      border-color: var(--ds-teeno-inputErrorBorder);
       
       &:focus-within {
-        border-color: var(--ds-inputActiveErrorBorder);
-        box-shadow: 0 0 0 3px var(--ds-inputActiveErrorOutline);
+        border-color: var(--ds-teeno-inputActiveErrorBorder);
+        box-shadow: 0 0 0 3px var(--ds-teeno-inputActiveErrorOutline);
       }
     }
     
     &.disabled {
       opacity: 0.5;
       cursor: not-allowed;
-      background: var(--ds-inputSecondary);
+      background: var(--ds-teeno-inputSecondary);
     }
   }
 
@@ -122,7 +122,7 @@
     border: none;
     outline: none;
     background: transparent;
-    color: var(--ds-textPrimary);
+    color: var(--ds-teeno-textPrimary);
     resize: none;
     min-height: calc(var(--32px) * 3);
 
@@ -131,7 +131,7 @@
     }
     
     &::placeholder {
-      color: var(--ds-textTertiary);
+      color: var(--ds-teeno-textTertiary);
     }
     
     &:disabled {
@@ -142,7 +142,7 @@
   .textarea-error {
     font-family: var(--font-base);
     font-size: var(--11px);
-    color: var(--ds-inputErrorText);
+    color: var(--ds-teeno-inputErrorText);
     display: flex;
     align-items: center;
     gap: var(--4px);
@@ -151,7 +151,7 @@
   .textarea-counter {
     font-family: var(--font-base);
     font-size: var(--11px);
-    color: var(--ds-textTertiary);
+    color: var(--ds-teeno-textTertiary);
     text-align: right;
     margin-top: var(--2px);
   }

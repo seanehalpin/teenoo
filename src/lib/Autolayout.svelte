@@ -48,9 +48,9 @@
   // Map border color names to CSS variables
   let borderColorVar = $derived(() => {
     const colorMap = {
-      'primary': 'var(--ds-borderPrimary)',
-      'secondary': 'var(--ds-borderSecondary)',
-      'strong': 'var(--ds-borderStrong)'
+      'primary': 'var(--ds-teeno-borderPrimary)',
+      'secondary': 'var(--ds-teeno-borderSecondary)',
+      'strong': 'var(--ds-teeno-borderStrong)'
     };
     return colorMap[borderColor] || colorMap.primary;
   });

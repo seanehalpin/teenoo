@@ -153,7 +153,7 @@ Quick copy-paste examples for common use cases.
 
       <T.Autolayout vertical gap="4px">
         <T.Text strong>{user.name}</T.Text>
-        <T.Text small color="var(--ds-textSecondary)">
+        <T.Text small color="var(--ds-teeno-textSecondary)">
           {user.role}
         </T.Text>
       </T.Autolayout>
@@ -241,7 +241,7 @@ Quick copy-paste examples for common use cases.
     maxTags={10}
   />
 
-  <T.Text small color="var(--ds-textSecondary)">
+  <T.Text small color="var(--ds-teeno-textSecondary)">
     {tags.length} tag{tags.length !== 1 ? 's' : ''} added
   </T.Text>
 </T.Autolayout>
@@ -321,7 +321,7 @@ Quick copy-paste examples for common use cases.
         borderRadius="12px"
         flex
       >
-        <T.Text small color="var(--ds-textSecondary)">{stat.label}</T.Text>
+        <T.Text small color="var(--ds-teeno-textSecondary)">{stat.label}</T.Text>
         <T.Text title>{stat.value}</T.Text>
       </T.Autolayout>
     {/each}
@@ -347,12 +347,12 @@ Quick copy-paste examples for common use cases.
           gap="var(--12px)"
           padding="var(--12px)"
           borderRadius="8px"
-          background="var(--ds-surfaceSecondary)"
+          background="var(--ds-teeno-surfaceSecondary)"
         >
           <T.Avatar size="small" avatarNum={item} />
           <T.Autolayout vertical gap="var(--4px)">
             <T.Text small strong>Activity {item}</T.Text>
-            <T.Text tiny color="var(--ds-textTertiary)">2 hours ago</T.Text>
+            <T.Text tiny color="var(--ds-teeno-textTertiary)">2 hours ago</T.Text>
           </T.Autolayout>
         </T.Autolayout>
       {/each}

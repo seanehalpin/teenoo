@@ -11,22 +11,22 @@
     position = 'absolute',
     width = 'auto',
     height = 'auto',
-    background = 'var(--ds-popoverPrimary)',
+    background = 'var(--ds-teeno-popoverPrimary)',
     border = false,
     borderWeight = 1,
     borderColor = 'primary',
     borderRadius = 'var(--12px)',
     padding = 'var(--12px)',
-    boxShadow = 'inset 0 0 0 1px var(--ds-borderSecondary), 0 154px 43px 0 rgba(0, 0, 0, 0.00), 0 98px 39px 0 rgba(0, 0, 0, 0.01), 0 55px 33px 0 rgba(0, 0, 0, 0.03), 0 25px 25px 0 rgba(0, 0, 0, 0.05), 0 6px 14px 0 rgba(0, 0, 0, 0.06)',
+    boxShadow = 'inset 0 0 0 1px var(--ds-teeno-borderSecondary), 0 154px 43px 0 rgba(0, 0, 0, 0.00), 0 98px 39px 0 rgba(0, 0, 0, 0.01), 0 55px 33px 0 rgba(0, 0, 0, 0.03), 0 25px 25px 0 rgba(0, 0, 0, 0.05), 0 6px 14px 0 rgba(0, 0, 0, 0.06)',
     style = '',
   } = $props();
 
   // Map border color names to CSS variables
   let borderColorVar = $derived(() => {
     const colorMap = {
-      'primary': 'var(--ds-borderPrimary)',
-      'secondary': 'var(--ds-borderSecondary)',
-      'strong': 'var(--ds-borderStrong)'
+      'primary': 'var(--ds-teeno-borderPrimary)',
+      'secondary': 'var(--ds-teeno-borderSecondary)',
+      'strong': 'var(--ds-teeno-borderStrong)'
     };
     return colorMap[borderColor] || colorMap.primary;
   });

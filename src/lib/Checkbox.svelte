@@ -47,9 +47,9 @@
         disabled={disabled}
       >
         {#if indeterminate}
-          <svg class="checkbox-icon" width="8px" height="2px"><rect x="0" y="0" width="8" height="2" fill="var(--ds-textWhite)" rx="1"></rect></svg>
+          <svg class="checkbox-icon" width="8px" height="2px"><rect x="0" y="0" width="8" height="2" fill="var(--ds-teeno-textWhite)" rx="1"></rect></svg>
         {:else if checked}
-          <svg class="checkbox-icon"  width="8px" height="8px"><path d="M1 3.9 L 3.25 6 L 7 2.5" fill="transparent" stroke-width="1.5" stroke="var(--ds-textWhite)" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1"></path></svg>
+          <svg class="checkbox-icon"  width="8px" height="8px"><path d="M1 3.9 L 3.25 6 L 7 2.5" fill="transparent" stroke-width="1.5" stroke="var(--ds-teeno-textWhite)" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1"></path></svg>
         {/if}
       </button>
     </div>
@@ -86,7 +86,7 @@
   .checkbox-label {
     font-family: var(--font-base);
     font-size: var(--12px);
-    color: var(--ds-textPrimary);
+    color: var(--ds-teeno-textPrimary);
     cursor: pointer;
     
     .disabled & {
@@ -94,7 +94,7 @@
     }
     
     .error & {
-      color: var(--ds-error, #dc3545);
+      color: var(--ds-teeno-error, #dc3545);
     }
   }
   
@@ -103,9 +103,9 @@
     width: var(--16px);
     height: var(--16px);
     padding: 0;
-    border: 1px solid var(--ds-borderPrimary);
+    border: 1px solid var(--ds-teeno-borderPrimary);
     border-radius: calc(var(--4px) + 1px);
-    background-color: var(--ds-checkboxUnchecked);
+    background-color: var(--ds-teeno-checkboxUnchecked);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -113,33 +113,33 @@
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     
     &:focus-visible {
-      outline: 2px solid var(--ds-primary);
+      outline: 2px solid var(--ds-teeno-primary);
       outline-offset: 2px;
     }
     
     &:hover:not(.disabled) {
-      /* border-color: var(--ds-primary); */
+      /* border-color: var(--ds-teeno-primary); */
     }
     
     &.checked {
-      background-color: var(--ds-checkboxEnabled);
-      border-color: var(--ds-checkboxEnabled);
+      background-color: var(--ds-teeno-checkboxEnabled);
+      border-color: var(--ds-teeno-checkboxEnabled);
       color: white;
     }
     
     &.indeterminate {
-      background-color: var(--ds-checkboxEnabled);
-      border-color: var(--ds-checkboxEnabled);
+      background-color: var(--ds-teeno-checkboxEnabled);
+      border-color: var(--ds-teeno-checkboxEnabled);
       color: white;
     }
     
     &.disabled {
       cursor: not-allowed;
-      background-color: var(--ds-checkboxDisabled);
+      background-color: var(--ds-teeno-checkboxDisabled);
     }
     
     &.error:not(.checked) {
-      border-color: var(--ds-error, var(--ds-red));
+      border-color: var(--ds-teeno-error, var(--ds-teeno-red));
     }
   }
   

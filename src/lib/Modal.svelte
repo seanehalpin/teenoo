@@ -123,7 +123,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    // background: var(--ds-modalOverlay);
+    // background: var(--ds-teeno-modalOverlay);
     // backdrop-filter: blur(3px);
     display: flex;
     align-items: center;
@@ -137,7 +137,7 @@
   }
   
   .modal {
-    background-color: var(--ds-surfacePrimary);
+    background-color: var(--ds-teeno-surfacePrimary);
     border-radius: var(--12px);
     box-shadow: 0 var(--8px) var(--24px) rgba(0, 0, 0, 0.1);
     max-height: 90vh;
@@ -162,14 +162,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--ds-borderPrimary);
+    border-bottom: 1px solid var(--ds-teeno-borderPrimary);
   }
   
   .modal-title {
     font-family: var(--font-base);
     font-size: var(--12px);
     font-weight: 500;
-    color: var(--ds-textPrimary);
+    color: var(--ds-teeno-textPrimary);
   }
   
   .modal-close {
@@ -182,12 +182,12 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: var(--ds-textSecondary);
+    color: var(--ds-teeno-textSecondary);
     padding: 0;
     
     &:hover {
-      background-color: var(--ds-surfaceSecondary);
-      color: var(--ds-textPrimary);
+      background-color: var(--ds-teeno-surfaceSecondary);
+      color: var(--ds-teeno-textPrimary);
     }
   }
   
@@ -205,7 +205,7 @@
     width: 100%;
     align-items: center;
     padding: var(--20px);
-    border-top: 1px solid var(--ds-borderPrimary);
+    border-top: 1px solid var(--ds-teeno-borderPrimary);
   }
 
   .modal-backdrop {
@@ -214,7 +214,7 @@
     top: 0;
     right: 0;
     bottom: 0;
-    background: var(--ds-modalOverlay);
+    background: var(--ds-teeno-modalOverlay);
     backdrop-filter: blur(3px);
     z-index: 1;
     cursor: default !important

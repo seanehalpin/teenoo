@@ -106,7 +106,7 @@
         {#if icon}
           <div class="toast-icon">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="14" height="14" rx="7" fill="var(--ds-green)"/>
+              <rect width="14" height="14" rx="7" fill="var(--ds-teeno-green)"/>
               <path d="M4.375 7L6.125 8.75L9.625 5.25" stroke="white" stroke-width="1.3125" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
@@ -141,10 +141,10 @@
   }
   
   .toast {
-    background-color: var(--ds-surfacePrimary);
-    color: var(--ds-textPrimary);
+    background-color: var(--ds-teeno-surfacePrimary);
+    color: var(--ds-teeno-textPrimary);
     border-radius: var(--12px);
-    border: 1px solid var(--ds-borderSecondary);
+    border: 1px solid var(--ds-teeno-borderSecondary);
     box-shadow: 0px 154px 43px 0px rgba(0, 0, 0, 0.00), 0px 98px 39px 0px rgba(0, 0, 0, 0.01), 0px 55px 33px 0px rgba(0, 0, 0, 0.03), 0px 25px 25px 0px rgba(0, 0, 0, 0.05), 0px 6px 14px 0px rgba(0, 0, 0, 0.06);
     padding: 0 var(--16px) 0 var(--14px);
     height: 46px;
@@ -189,13 +189,13 @@
     padding: var(--4px) var(--8px);
     font-size: var(--12px);
     font-weight: 500;
-    color: var(--ds-primary);
+    color: var(--ds-teeno-primary);
     cursor: pointer;
     transition: background-color 0.2s ease;
     flex-shrink: 0;
     
     &:hover {
-      background-color: var(--ds-surfaceSecondary);
+      background-color: var(--ds-teeno-surfaceSecondary);
     }
   }
   

@@ -712,7 +712,7 @@ interface MyButtonGroupProps {
 - `jumbo` - 24px, bold
 
 **Other Props**:
-- `color` (string, default: "") - Custom text color (e.g., "var(--ds-textSecondary)" or "#ff0000")
+- `color` (string, default: "") - Custom text color (e.g., "var(--ds-teeno-textSecondary)" or "#ff0000")
 - `className` (string, default: "") - Custom CSS class
 - `pretty` (boolean, default: false) - Enable pretty text wrapping
 - `as` (string, default: "span") - HTML element: "span", "p", "div", "label", "h1", "h2", "h3", "jumbo"
@@ -741,7 +741,7 @@ interface MyButtonGroupProps {
 <T.Text jumbo>Jumbo (24px)</T.Text>
 
 <!-- Custom colors and elements -->
-<T.Text color="var(--ds-textSecondary)">Secondary text</T.Text>
+<T.Text color="var(--ds-teeno-textSecondary)">Secondary text</T.Text>
 <T.Text as="p" pretty>This is a paragraph with pretty text wrapping.</T.Text>
 <T.Text as="h1" jumbo>Page Title</T.Text>
 ```
@@ -906,10 +906,10 @@ Use inline functions or predefined handlers:
 
 All components use CSS variables from the design system:
 
-- `--ds-primary` - Primary color
-- `--ds-textPrimary`, `--ds-textSecondary`, `--ds-textTertiary`
-- `--ds-surfacePrimary`, `--ds-surfaceSecondary`
-- `--ds-borderPrimary`, `--ds-borderSecondary`
+- `--ds-teeno-primary` - Primary color
+- `--ds-teeno-textPrimary`, `--ds-teeno-textSecondary`, `--ds-teeno-textTertiary`
+- `--ds-teeno-surfacePrimary`, `--ds-teeno-surfaceSecondary`
+- `--ds-teeno-borderPrimary`, `--ds-teeno-borderSecondary`
 - Size tokens: `--8px`, `--12px`, `--16px`, `--20px`, `--24px`, `--32px`
 - `--font-base` - Base font family
 
@@ -1077,16 +1077,16 @@ Many components use boolean props as modifiers:
 ## Design System Variables Reference
 
 ### Colors
-- `--ds-primary` - Primary brand color
-- `--ds-textPrimary` - Primary text
-- `--ds-textSecondary` - Secondary text
-- `--ds-textTertiary` - Tertiary text
-- `--ds-textWhite` - White text
-- `--ds-surfacePrimary` - Primary surface
-- `--ds-surfaceSecondary` - Secondary surface
-- `--ds-borderPrimary` - Primary border
-- `--ds-borderSecondary` - Secondary border
-- `--ds-borderStrong` - Strong border
+- `--ds-teeno-primary` - Primary brand color
+- `--ds-teeno-textPrimary` - Primary text
+- `--ds-teeno-textSecondary` - Secondary text
+- `--ds-teeno-textTertiary` - Tertiary text
+- `--ds-teeno-textWhite` - White text
+- `--ds-teeno-surfacePrimary` - Primary surface
+- `--ds-teeno-surfaceSecondary` - Secondary surface
+- `--ds-teeno-borderPrimary` - Primary border
+- `--ds-teeno-borderSecondary` - Secondary border
+- `--ds-teeno-borderStrong` - Strong border
 
 ### Sizing
 - `--4px`, `--8px`, `--12px`, `--16px`, `--20px`, `--24px`, `--32px`

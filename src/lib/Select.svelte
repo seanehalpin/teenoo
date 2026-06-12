@@ -151,7 +151,7 @@
   .select-label {
     font-family: var(--font-base);
     font-size: var(--12px);
-    color: var(--ds-textSecondary);
+    color: var(--ds-teeno-textSecondary);
     font-weight: 500;
     
   }
@@ -162,9 +162,9 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    border: 1px solid var(--ds-borderPrimary);
+    border: 1px solid var(--ds-teeno-borderPrimary);
     border-radius: var(--8px);
-    background: var(--ds-inputPrimary);
+    background: var(--ds-teeno-inputPrimary);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
     position: relative;
@@ -172,27 +172,27 @@
     height: var(--32px);
     
     &:focus-within, &.open {
-      border-color: var(--ds-inputActiveBorder);
-      box-shadow: 0 0 0 3px var(--ds-inputActiveOutline);
+      border-color: var(--ds-teeno-inputActiveBorder);
+      box-shadow: 0 0 0 3px var(--ds-teeno-inputActiveOutline);
     }
     
     &:hover:not(.open):not(.disabled):not(.hasError) {
-      border-color: var(--ds-inputHoverBorder);
+      border-color: var(--ds-teeno-inputHoverBorder);
     }
     
     &.hasError {
-      border-color: var(--ds-inputErrorBorder);
+      border-color: var(--ds-teeno-inputErrorBorder);
       
       &:focus-within, &.open {
-        border-color: var(--ds-inputActiveErrorBorder);
-        box-shadow: 0 0 0 3px var(--ds-inputActiveErrorOutline);
+        border-color: var(--ds-teeno-inputActiveErrorBorder);
+        box-shadow: 0 0 0 3px var(--ds-teeno-inputActiveErrorOutline);
       }
     }
     
     &.disabled {
       opacity: 0.5;
       cursor: not-allowed;
-      background: var(--ds-inputSecondary);
+      background: var(--ds-teeno-inputSecondary);
     }
     
     &.open {
@@ -203,7 +203,7 @@
   .select-value {
     font-family: var(--font-base);
     font-size: var(--12px);
-    color: var(--ds-textPrimary);
+    color: var(--ds-teeno-textPrimary);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -214,7 +214,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--ds-textSecondary);
+    color: var(--ds-teeno-textSecondary);
     margin-left: var(--8px);
     transition: transform 0.2s ease;
   }
@@ -225,7 +225,7 @@
     top: calc(100% + var(--4px));
     left: 0;
     right: 0;
-    background: var(--ds-popoverPrimary);
+    background: var(--ds-teeno-popoverPrimary);
     border-radius: var(--12px);
     box-shadow: 0 var(--4px) var(--16px) rgba(0, 0, 0, 0.1);
     z-index: 10;
@@ -233,7 +233,7 @@
     padding: var(--12px);
     max-height: 200px;
     overflow-y: auto;
-    box-shadow: 0 0 0 1px var(--ds-borderSecondary), 0px 154px 43px 0px rgba(0, 0, 0, 0.00), 0px 98px 39px 0px rgba(0, 0, 0, 0.01), 0px 55px 33px 0px rgba(0, 0, 0, 0.03), 0px 25px 25px 0px rgba(0, 0, 0, 0.05), 0px 6px 14px 0px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0 0 1px var(--ds-teeno-borderSecondary), 0px 154px 43px 0px rgba(0, 0, 0, 0.00), 0px 98px 39px 0px rgba(0, 0, 0, 0.01), 0px 55px 33px 0px rgba(0, 0, 0, 0.03), 0px 25px 25px 0px rgba(0, 0, 0, 0.05), 0px 6px 14px 0px rgba(0, 0, 0, 0.06);
 
     &.top {
       bottom: calc(100% + var(--4px));
@@ -255,18 +255,18 @@
     width: 100%;
     font-family: var(--font-base);
     font-size: var(--12px);
-    color: var(--ds-textPrimary);
+    color: var(--ds-teeno-textPrimary);
     cursor: pointer;
     transition: background 0.1s ease;
     border-radius: var(--8px);
     
     &:hover {
-      background: var(--ds-popoverHover);
+      background: var(--ds-teeno-popoverHover);
     }
     
     &.selected {
-      background: var(--ds-primary08);
-      color: var(--ds-primary);
+      background: var(--ds-teeno-primary08);
+      color: var(--ds-teeno-primary);
       font-weight: 500;
     }
   }
@@ -274,7 +274,7 @@
   .select-error {
     font-family: var(--font-base);
     font-size: var(--11px);
-    color: var(--ds-inputErrorText);
+    color: var(--ds-teeno-inputErrorText);
     display: flex;
     align-items: center;
     gap: var(--4px);
