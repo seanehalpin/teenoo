@@ -45,7 +45,7 @@
     <button class="team" onclick={(e) => onteamclick(e)}>
       <Avatar
         team
-        size="small"
+        size="tiny"
         name={team.name}
         initial={team.initial}
         image={team.image}
@@ -126,7 +126,7 @@
     align-items: center;
     gap: var(--8px);
     height: var(--32px);
-    padding: 0 var(--8px) 0 var(--4px);
+    padding: 0 var(--8px);
     border-radius: var(--8px);
     background: var(--ds-teeno-controlSecondary);
     border: 1px solid var(--ds-teeno-borderPrimary);
