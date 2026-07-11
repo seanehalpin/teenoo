@@ -2,7 +2,7 @@
   import StyleProvider from './StyleProvider.svelte';
     
   let { 
-    size = 'medium', // small: 24px, medium: 32px, large: 48px
+    size = 'medium', // tiny: 20px, small: 24px, medium: 32px, large: 48px
     team = false, // When true, avatar has 12px radius, otherwise it's round
     initial = "", // Single letter or two initials to display
     image = "", // URL to the image
@@ -17,6 +17,7 @@
   // Size in pixels based on the size prop
   function getSize(): number {
     switch (size) {
+      case 'tiny': return 20;
       case 'small': return 24;
       case 'large': return 48;
       case 'medium':
@@ -28,6 +29,7 @@
   function getBorderRadius(): string {
     if (team) {
       switch (size) {
+        case 'tiny': return '4px';
         case 'small': return '4px';
         case 'medium': return '8px';
         case 'large':
@@ -42,6 +44,7 @@
   // Font size based on avatar size
   function getFontSize(): string {
     switch (size) {
+      case 'tiny': return 'var(--8px)';
       case 'small': return 'var(--10px)';
       case 'large': return 'var(--16px)';
       case 'medium':
@@ -136,6 +139,7 @@
 <StyleProvider>
   <div
     class="avatar"
+    class:avatar-tiny={size === 'tiny'}
     class:avatar-small={size === 'small'}
     class:avatar-medium={size === 'medium'}
     class:avatar-large={size === 'large'}
@@ -203,6 +207,10 @@
   }
   
   /* Size variations */
+  .avatar-tiny {
+    font-size: 8px;
+  }
+
   .avatar-small {
     font-size: 10px;
   }
