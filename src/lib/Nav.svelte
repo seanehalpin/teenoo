@@ -126,7 +126,7 @@
     align-items: center;
     gap: var(--8px);
     height: var(--32px);
-    padding: 0 var(--8px);
+    padding: 0 var(--8px) 0 var(--4px);
     border-radius: var(--8px);
     background: var(--ds-teeno-controlSecondary);
     border: 1px solid var(--ds-teeno-borderPrimary);
