@@ -11,7 +11,7 @@
     bgcolor = "", // Optional custom background color (overrides color)
     textcolor = "", // Optional custom text color
     avatarNum = 0, // Number between 1-20 for pravatar.cc avatar (0 means disabled),
-    onclick,
+    onclick = undefined,
   } = $props();
 
   // Size in pixels based on the size prop
