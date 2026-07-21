@@ -217,6 +217,8 @@
   --ds-teeno-diagramBackground: #F9F9F9;
   --ds-teeno-InputBackground: #F9F9F9;
   --ds-teeno-actionBarBackground: #FFFFFF;
+
+  --ds-teenoo-shadowToast: 0 154px 43px 0 rgba(0, 0, 0, 0.00), 0 98px 39px 0 rgba(0, 0, 0, 0.01), 0 55px 33px 0 rgba(0, 0, 0, 0.03), 0 25px 25px 0 rgba(0, 0, 0, 0.05), 0 6px 14px 0 rgba(0, 0, 0, 0.06);
 }
 
 :global(.dark, .figma-dark) {
@@ -382,5 +384,7 @@
   --ds-teeno-diagramBackground: #111;
   --ds-teeno-InputBackground: #252525;
   --ds-teeno-actionBarBackground: #252525;
+
+
 }
 </style>

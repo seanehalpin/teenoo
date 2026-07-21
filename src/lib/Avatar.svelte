@@ -182,7 +182,7 @@
     overflow: hidden;
     font-family: var(--font-base);
     line-height: 1;
-    font-weight: 600;
+    font-weight: 500;
     user-select: none;
     flex-shrink: 0;
   }
